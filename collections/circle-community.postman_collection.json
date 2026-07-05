@@ -1,0 +1,228 @@
+{
+  "info": {
+    "name": "Circle Developer Platform API",
+    "description": "Circle (circle.so) all-in-one community platform developer API. Covers the admin-authenticated Admin API V2 (Authorization: Token AUTH_TOKEN) and the member-authenticated Headless Member API (Authorization: Bearer ACCESS_TOKEN). Base host: https://app.circle.so. API access is gated to the Business plan and above. This is the community-software company at circle.so, NOT the USDC / crypto company.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://app.circle.so", "type": "string" },
+    { "key": "adminToken", "value": "", "type": "string" },
+    { "key": "memberAccessToken", "value": "", "type": "string" }
+  ],
+  "item": [
+    {
+      "name": "Admin - Members",
+      "item": [
+        {
+          "name": "List community members",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Token {{adminToken}}" }],
+            "url": { "raw": "{{baseUrl}}/api/admin/v2/community_members?page=1&per_page=10", "host": ["{{baseUrl}}"], "path": ["api", "admin", "v2", "community_members"], "query": [{ "key": "page", "value": "1" }, { "key": "per_page", "value": "10" }] },
+            "description": "Lists community members (paginated)."
+          }
+        },
+        {
+          "name": "Invite or create a community member",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Token {{adminToken}}" }, { "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"email\": \"new.member@example.com\"\n}" },
+            "url": { "raw": "{{baseUrl}}/api/admin/v2/community_members", "host": ["{{baseUrl}}"], "path": ["api", "admin", "v2", "community_members"] },
+            "description": "Invites or creates a community member."
+          }
+        },
+        {
+          "name": "Retrieve a community member",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Token {{adminToken}}" }],
+            "url": { "raw": "{{baseUrl}}/api/admin/v2/community_members/:id", "host": ["{{baseUrl}}"], "path": ["api", "admin", "v2", "community_members", ":id"], "variable": [{ "key": "id", "value": "" }] }
+          }
+        },
+        {
+          "name": "List member tags",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Token {{adminToken}}" }],
+            "url": { "raw": "{{baseUrl}}/api/admin/v2/member_tags", "host": ["{{baseUrl}}"], "path": ["api", "admin", "v2", "member_tags"] }
+          }
+        },
+        {
+          "name": "Apply a tag to a member",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Token {{adminToken}}" }, { "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/api/admin/v2/tagged_members", "host": ["{{baseUrl}}"], "path": ["api", "admin", "v2", "tagged_members"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Admin - Spaces",
+      "item": [
+        {
+          "name": "List spaces",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Token {{adminToken}}" }],
+            "url": { "raw": "{{baseUrl}}/api/admin/v2/spaces", "host": ["{{baseUrl}}"], "path": ["api", "admin", "v2", "spaces"] }
+          }
+        },
+        {
+          "name": "Create a space",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Token {{adminToken}}" }, { "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"My Space\"\n}" },
+            "url": { "raw": "{{baseUrl}}/api/admin/v2/spaces", "host": ["{{baseUrl}}"], "path": ["api", "admin", "v2", "spaces"] }
+          }
+        },
+        {
+          "name": "List space members",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Token {{adminToken}}" }],
+            "url": { "raw": "{{baseUrl}}/api/admin/v2/space_members", "host": ["{{baseUrl}}"], "path": ["api", "admin", "v2", "space_members"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Admin - Posts",
+      "item": [
+        {
+          "name": "List posts",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Token {{adminToken}}" }],
+            "url": { "raw": "{{baseUrl}}/api/admin/v2/posts?page=1&per_page=10", "host": ["{{baseUrl}}"], "path": ["api", "admin", "v2", "posts"], "query": [{ "key": "page", "value": "1" }, { "key": "per_page", "value": "10" }] }
+          }
+        },
+        {
+          "name": "Create a post",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Token {{adminToken}}" }, { "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/api/admin/v2/posts", "host": ["{{baseUrl}}"], "path": ["api", "admin", "v2", "posts"] }
+          }
+        },
+        {
+          "name": "List comments",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Token {{adminToken}}" }],
+            "url": { "raw": "{{baseUrl}}/api/admin/v2/comments", "host": ["{{baseUrl}}"], "path": ["api", "admin", "v2", "comments"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Admin - Events",
+      "item": [
+        {
+          "name": "List events",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Token {{adminToken}}" }],
+            "url": { "raw": "{{baseUrl}}/api/admin/v2/events", "host": ["{{baseUrl}}"], "path": ["api", "admin", "v2", "events"] }
+          }
+        },
+        {
+          "name": "Add an event attendee",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Token {{adminToken}}" }, { "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/api/admin/v2/event_attendees", "host": ["{{baseUrl}}"], "path": ["api", "admin", "v2", "event_attendees"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Admin - Courses",
+      "item": [
+        {
+          "name": "List course sections",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Token {{adminToken}}" }],
+            "url": { "raw": "{{baseUrl}}/api/admin/v2/course_sections", "host": ["{{baseUrl}}"], "path": ["api", "admin", "v2", "course_sections"] }
+          }
+        },
+        {
+          "name": "List course lessons",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Token {{adminToken}}" }],
+            "url": { "raw": "{{baseUrl}}/api/admin/v2/course_lessons", "host": ["{{baseUrl}}"], "path": ["api", "admin", "v2", "course_lessons"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Headless - Auth",
+      "item": [
+        {
+          "name": "Exchange headless auth token for member JWT",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{headlessAuthToken}}" }, { "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"community_member_id\": 0\n}" },
+            "url": { "raw": "{{baseUrl}}/api/v1/headless/auth_token", "host": ["{{baseUrl}}"], "path": ["api", "v1", "headless", "auth_token"] },
+            "description": "Exchanges a community-level headless auth token for a member-scoped JWT access token (expires after one hour) plus refresh token."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Headless - Member",
+      "item": [
+        {
+          "name": "Get member home feed",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{memberAccessToken}}" }],
+            "url": { "raw": "{{baseUrl}}/api/headless/v1/home", "host": ["{{baseUrl}}"], "path": ["api", "headless", "v1", "home"] }
+          }
+        },
+        {
+          "name": "List posts in a space",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{memberAccessToken}}" }],
+            "url": { "raw": "{{baseUrl}}/api/headless/v1/spaces/:space_id/posts", "host": ["{{baseUrl}}"], "path": ["api", "headless", "v1", "spaces", ":space_id", "posts"], "variable": [{ "key": "space_id", "value": "" }] }
+          }
+        },
+        {
+          "name": "Comment on a post",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{memberAccessToken}}" }, { "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"body\": \"Great post!\"\n}" },
+            "url": { "raw": "{{baseUrl}}/api/headless/v1/posts/:post_id/comments", "host": ["{{baseUrl}}"], "path": ["api", "headless", "v1", "posts", ":post_id", "comments"], "variable": [{ "key": "post_id", "value": "" }] }
+          }
+        },
+        {
+          "name": "Send a chat message",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{memberAccessToken}}" }, { "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"body\": \"Hello\"\n}" },
+            "url": { "raw": "{{baseUrl}}/api/headless/v1/messages/:chat_room_uuid/chat_room_messages", "host": ["{{baseUrl}}"], "path": ["api", "headless", "v1", "messages", ":chat_room_uuid", "chat_room_messages"], "variable": [{ "key": "chat_room_uuid", "value": "" }] }
+          }
+        },
+        {
+          "name": "List notifications",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{memberAccessToken}}" }],
+            "url": { "raw": "{{baseUrl}}/api/headless/v1/notifications", "host": ["{{baseUrl}}"], "path": ["api", "headless", "v1", "notifications"] }
+          }
+        }
+      ]
+    }
+  ]
+}

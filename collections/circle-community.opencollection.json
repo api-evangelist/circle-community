@@ -1,0 +1,187 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Circle Developer Platform API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": { "name": "Admin - Members", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List community members", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://app.circle.so/api/admin/v2/community_members",
+            "headers": [{ "name": "Authorization", "value": "Token {{adminToken}}" }],
+            "params": [
+              { "name": "page", "value": "1", "type": "query" },
+              { "name": "per_page", "value": "10", "type": "query" }
+            ]
+          },
+          "docs": "Lists community members (paginated)."
+        },
+        {
+          "info": { "name": "Invite or create a community member", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://app.circle.so/api/admin/v2/community_members",
+            "headers": [{ "name": "Authorization", "value": "Token {{adminToken}}" }],
+            "body": { "type": "json", "data": "{}" }
+          },
+          "docs": "Invites or creates a community member."
+        },
+        {
+          "info": { "name": "List member tags", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://app.circle.so/api/admin/v2/member_tags",
+            "headers": [{ "name": "Authorization", "value": "Token {{adminToken}}" }]
+          },
+          "docs": "Lists member tags."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Admin - Spaces", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List spaces", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://app.circle.so/api/admin/v2/spaces",
+            "headers": [{ "name": "Authorization", "value": "Token {{adminToken}}" }]
+          },
+          "docs": "Lists spaces."
+        },
+        {
+          "info": { "name": "Create a space", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://app.circle.so/api/admin/v2/spaces",
+            "headers": [{ "name": "Authorization", "value": "Token {{adminToken}}" }],
+            "body": { "type": "json", "data": "{}" }
+          },
+          "docs": "Creates a space."
+        },
+        {
+          "info": { "name": "List space members", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://app.circle.so/api/admin/v2/space_members",
+            "headers": [{ "name": "Authorization", "value": "Token {{adminToken}}" }]
+          },
+          "docs": "Lists space members."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Admin - Posts", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List posts", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://app.circle.so/api/admin/v2/posts",
+            "headers": [{ "name": "Authorization", "value": "Token {{adminToken}}" }]
+          },
+          "docs": "Lists posts across spaces."
+        },
+        {
+          "info": { "name": "List comments", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://app.circle.so/api/admin/v2/comments",
+            "headers": [{ "name": "Authorization", "value": "Token {{adminToken}}" }]
+          },
+          "docs": "Lists comments."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Admin - Events", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List events", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://app.circle.so/api/admin/v2/events",
+            "headers": [{ "name": "Authorization", "value": "Token {{adminToken}}" }]
+          },
+          "docs": "Lists community events."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Admin - Courses", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List course sections", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://app.circle.so/api/admin/v2/course_sections",
+            "headers": [{ "name": "Authorization", "value": "Token {{adminToken}}" }]
+          },
+          "docs": "Lists course sections."
+        },
+        {
+          "info": { "name": "List course lessons", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://app.circle.so/api/admin/v2/course_lessons",
+            "headers": [{ "name": "Authorization", "value": "Token {{adminToken}}" }]
+          },
+          "docs": "Lists course lessons."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Headless - Auth", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Exchange headless auth token for member JWT", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://app.circle.so/api/v1/headless/auth_token",
+            "headers": [{ "name": "Authorization", "value": "Bearer {{headlessAuthToken}}" }],
+            "body": { "type": "json", "data": "{}" }
+          },
+          "docs": "Exchanges a community-level headless auth token for a member-scoped JWT access token (expires after one hour) plus refresh token."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Headless - Member", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Get member home feed", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://app.circle.so/api/headless/v1/home",
+            "headers": [{ "name": "Authorization", "value": "Bearer {{memberAccessToken}}" }]
+          },
+          "docs": "Returns the member's home feed."
+        },
+        {
+          "info": { "name": "List posts in a space", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://app.circle.so/api/headless/v1/spaces/:space_id/posts",
+            "headers": [{ "name": "Authorization", "value": "Bearer {{memberAccessToken}}" }],
+            "params": [{ "name": "space_id", "value": "", "type": "path" }]
+          },
+          "docs": "Lists posts in a space as the member."
+        },
+        {
+          "info": { "name": "List notifications", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://app.circle.so/api/headless/v1/notifications",
+            "headers": [{ "name": "Authorization", "value": "Bearer {{memberAccessToken}}" }]
+          },
+          "docs": "Lists the member's notifications."
+        }
+      ]
+    }
+  ]
+}

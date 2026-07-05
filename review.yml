@@ -1,0 +1,121 @@
+aid: circle-community
+name: Circle
+review:
+  question: Does Circle expose a documented public WebSocket API?
+  answer: true
+  date: '2026-07-05'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: true
+  asyncapiScopeNote: |
+    An AsyncAPI 2.6 document was authored (asyncapi/circle-community-asyncapi.yml)
+    because Circle DOES publish a documented public WebSocket surface. Circle's
+    "Websockets (Beta)" guide documents an ActionCable (Rails) endpoint at
+    wss://app.circle.so/cable that pushes realtime chat and notification events.
+    The AsyncAPI models the connection (member Bearer access token plus a
+    whitelisted Origin header) and the four documented channels: a
+    NotificationChannel and three chat channels (member-level room events,
+    room-wide messages, and thread events). It is server-push over WebSocket -
+    genuinely asynchronous - which is why AsyncAPI is the right artifact
+    alongside the OpenAPI for the REST admin/member surfaces.
+findings:
+  summary: |
+    Circle (circle.so) - the community platform for creators, NOT the USDC /
+    crypto company - exposes a documented public WebSocket API. In addition to
+    its REST surfaces (the admin-authenticated Admin API V2 and the
+    member-authenticated Headless Member API, both over HTTPS on
+    app.circle.so), Circle publishes a beta ActionCable WebSocket at
+    wss://app.circle.so/cable for realtime chat and notifications. Clients
+    connect with an "Authorization: Bearer HEADLESS_MEMBER_ACCESS_TOKEN" header
+    (the token expires after 1 hour) and an "Origin" header set to a
+    whitelisted community domain, then subscribe to ActionCable channels to
+    receive server-pushed events. The WebSocket is part of the Headless
+    offering and is gated to the Business plan and above.
+  openSource: |
+    Circle is a proprietary hosted SaaS platform; the core product is not open
+    source. Circle publishes Auth SDKs for the Headless Auth flow in Node.js,
+    Ruby, Go, and Python. The realtime transport is ActionCable, indicating a
+    Ruby on Rails backend.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://app.circle.so/api/admin/v2
+      documented: true
+      note: Admin API V2. Auth header "Token AUTH_TOKEN". Rate limit 2000 req / 5 min per IP.
+    - protocol: REST
+      scheme: https
+      baseURL: https://app.circle.so/api/headless/v1
+      documented: true
+      note: Headless Member API. Auth header "Bearer ACCESS_TOKEN" (member JWT from the Auth API).
+    - protocol: REST
+      scheme: https
+      baseURL: https://app.circle.so/api/v1/headless
+      documented: true
+      note: Headless Auth API. Exchanges a community auth token for a member JWT plus refresh token.
+    - protocol: WebSocket
+      scheme: wss
+      baseURL: wss://app.circle.so/cable
+      documented: true
+      note: ActionCable (Beta). NotificationChannel plus three chat channels. Bearer member token plus whitelisted Origin header.
+  endpointsConfirmedRest:
+    - GET    https://app.circle.so/api/admin/v2/community_members
+    - POST   https://app.circle.so/api/admin/v2/community_members
+    - GET    https://app.circle.so/api/admin/v2/community_members/search
+    - GET/PUT/DELETE https://app.circle.so/api/admin/v2/community_members/{id}
+    - GET    https://app.circle.so/api/admin/v2/member_tags
+    - GET/POST/DELETE https://app.circle.so/api/admin/v2/tagged_members
+    - GET/POST https://app.circle.so/api/admin/v2/spaces
+    - GET/PUT/DELETE https://app.circle.so/api/admin/v2/spaces/{id}
+    - GET/POST https://app.circle.so/api/admin/v2/space_groups
+    - GET/POST/DELETE https://app.circle.so/api/admin/v2/space_members
+    - GET/POST https://app.circle.so/api/admin/v2/posts
+    - GET/PUT/DELETE https://app.circle.so/api/admin/v2/posts/{id}
+    - GET    https://app.circle.so/api/admin/v2/posts/{post_id}/summary
+    - GET/POST https://app.circle.so/api/admin/v2/comments
+    - GET/POST https://app.circle.so/api/admin/v2/events
+    - GET/POST/DELETE https://app.circle.so/api/admin/v2/event_attendees
+    - GET/POST https://app.circle.so/api/admin/v2/course_sections
+    - GET/POST https://app.circle.so/api/admin/v2/course_lessons
+    - PUT    https://app.circle.so/api/admin/v2/course_lesson_progress
+    - POST   https://app.circle.so/api/v1/headless/auth_token
+    - GET    https://app.circle.so/api/headless/v1/home
+    - GET    https://app.circle.so/api/headless/v1/spaces
+    - GET/POST https://app.circle.so/api/headless/v1/spaces/{space_id}/posts
+    - GET/POST https://app.circle.so/api/headless/v1/posts/{post_id}/comments
+    - GET    https://app.circle.so/api/headless/v1/community_events
+    - GET/POST https://app.circle.so/api/headless/v1/messages
+    - GET    https://app.circle.so/api/headless/v1/notifications
+  endpointsConfirmedWebSocket:
+    - CONNECT wss://app.circle.so/cable (ActionCable)
+    - CHANNEL NotificationChannel (stream notification-channel-{community_member_id})
+    - CHANNEL chat-room-channel-{community_member_id} (member room events)
+    - CHANNEL chat-room-{chat_room_id}-channel (room-wide messages)
+    - CHANNEL chat-community-member-{community_member_id}-threads-channel (thread events)
+sources:
+  - url: https://api.circle.so/apis/admin-api
+    type: Documentation
+    note: Admin API V2 overview, Token auth, rate limit 2000/5min/IP.
+  - url: https://api.circle.so/apis/headless
+    type: Documentation
+    note: Headless Member API and Auth API; gated to Business plan and above.
+  - url: https://api.circle.so/apis/headless/member-api
+    type: Documentation
+    note: Member-authenticated endpoints for posts, comments, events, chat, notifications.
+  - url: https://api.circle.so/get-started/websockets-beta
+    type: Documentation
+    note: Documents the wss://app.circle.so/cable ActionCable WebSocket and its channels.
+  - url: https://api-headless.circle.so/?urls.primaryName=Admin+API+V2
+    type: APIReference
+    note: Swagger UI serving the real Admin API V2 OpenAPI (/api/admin/v2/swagger.yaml).
+  - url: https://api-headless.circle.so/?urls.primaryName=Member+APIs
+    type: APIReference
+    note: Swagger UI serving the real Headless Member API OpenAPI (/api/headless_client/v1/swagger.yaml).
+actions:
+  asyncapiPath: asyncapi/circle-community-asyncapi.yml
+  apisYmlUpdated: true
+  reason: |
+    Circle publishes a documented public WebSocket (ActionCable at
+    wss://app.circle.so/cable) for realtime chat and notifications, so the
+    review answer is true and an AsyncAPI document was authored to model it.
+    The REST admin and member surfaces are captured in the OpenAPI. A dedicated
+    "Circle Realtime WebSocket API" logical API was added to apis.yml pointing
+    at the AsyncAPI.

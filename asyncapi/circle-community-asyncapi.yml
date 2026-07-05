@@ -1,0 +1,129 @@
+asyncapi: 2.6.0
+info:
+  title: Circle Realtime WebSocket API (Beta)
+  version: '1.0'
+  description: >-
+    Circle exposes a documented public WebSocket API for realtime chat and
+    notifications, in beta for customers on the Business plan and above. The
+    transport is ActionCable (Rails' WebSocket framework), a pub/sub protocol,
+    connected at wss://app.circle.so/cable. Clients authenticate with a
+    member-scoped Bearer access token (the same HEADLESS_MEMBER_ACCESS_TOKEN
+    used by the Headless Member API, which expires after one hour and must be
+    refreshed) and must send an Origin header set to a domain whitelisted for
+    the community. After connecting, a client subscribes to ActionCable channels
+    to receive server-pushed messages. This is the community-software company at
+    circle.so, NOT the USDC / stablecoin financial-services company.
+  license:
+    name: Proprietary
+    url: https://circle.so/terms
+servers:
+  production:
+    url: app.circle.so/cable
+    protocol: wss
+    description: >-
+      Circle ActionCable WebSocket endpoint. Requires an "Authorization: Bearer
+      HEADLESS_MEMBER_ACCESS_TOKEN" header and an "Origin" header set to a
+      whitelisted community domain.
+    security:
+      - memberToken: []
+channels:
+  NotificationChannel:
+    description: >-
+      Realtime notifications for a signed-in community member. ActionCable
+      identifier channel "NotificationChannel"; the underlying pub/sub stream is
+      notification-channel-{community_member_id}.
+    subscribe:
+      operationId: receiveNotifications
+      summary: Receive realtime notification events for the member.
+      message:
+        oneOf:
+          - $ref: '#/components/messages/NewNotification'
+          - $ref: '#/components/messages/UpdateNewNotificationCount'
+          - $ref: '#/components/messages/ResetNewNotificationCount'
+  ChatRoomMemberChannel:
+    description: >-
+      Member-specific chat channel for room creation and update events. Pub/sub
+      stream chat-room-channel-{community_member_id}.
+    subscribe:
+      operationId: receiveMemberChatEvents
+      summary: Receive chat room creation and update events for the member.
+      message:
+        $ref: '#/components/messages/ChatRoomEvent'
+  ChatRoomChannel:
+    description: >-
+      Room-wide chat channel delivering messages, deletions, and updates to all
+      participants of a room. Pub/sub stream chat-room-{chat_room_id}-channel.
+    subscribe:
+      operationId: receiveRoomMessages
+      summary: Receive messages, updates, and deletions for a chat room.
+      message:
+        $ref: '#/components/messages/ChatMessage'
+  ChatThreadChannel:
+    description: >-
+      Thread-level chat channel delivering thread messages and status. Pub/sub
+      stream chat-community-member-{community_member_id}-threads-channel.
+    subscribe:
+      operationId: receiveThreadEvents
+      summary: Receive thread messages and status events for the member.
+      message:
+        $ref: '#/components/messages/ChatThreadEvent'
+components:
+  securitySchemes:
+    memberToken:
+      type: httpApiKey
+      in: header
+      name: Authorization
+      description: >-
+        Member-scoped Bearer access token in the format "Bearer
+        HEADLESS_MEMBER_ACCESS_TOKEN". Must be paired with an Origin header set
+        to a whitelisted community domain.
+  messages:
+    NewNotification:
+      name: newNotification
+      title: New notification
+      summary: A new notification was created for the member.
+      payload:
+        type: object
+        properties:
+          event: { type: string, example: newNotification }
+    UpdateNewNotificationCount:
+      name: updateNewNotificationCount
+      title: Update unread notification count
+      summary: The member's unread notification count changed.
+      payload:
+        type: object
+        properties:
+          event: { type: string, example: updateNewNotificationCount }
+    ResetNewNotificationCount:
+      name: resetNewNotificationCount
+      title: Reset unread notification count
+      summary: The member's unread notification count was reset.
+      payload:
+        type: object
+        properties:
+          event: { type: string, example: resetNewNotificationCount }
+    ChatRoomEvent:
+      name: chatRoomEvent
+      title: Chat room event
+      summary: A chat room was created or updated for the member.
+      payload:
+        type: object
+        properties:
+          event: { type: string }
+    ChatMessage:
+      name: chatMessage
+      title: Chat message
+      summary: A message was sent, updated, or deleted in a chat room.
+      payload:
+        type: object
+        properties:
+          event: { type: string }
+          chat_room_id: { type: integer }
+    ChatThreadEvent:
+      name: chatThreadEvent
+      title: Chat thread event
+      summary: A thread message or status update was delivered.
+      payload:
+        type: object
+        properties:
+          event: { type: string }

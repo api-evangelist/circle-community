@@ -1,0 +1,155 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Circle
+providerId: circle-community
+created: '2026-07-05'
+modified: '2026-07-05'
+reconciled: false
+tags:
+- Community
+- Creators
+- Courses
+- Memberships
+- Plans
+description: >-
+  Circle (circle.so) sells the platform on published monthly subscription tiers
+  (prices shown are the annual-billing monthly rate). The developer platform is
+  plan-gated: the Admin API and the Headless offering (Member API, Auth API, and
+  the beta WebSocket surface) are available on the Business plan and above.
+  Circle also charges a per-transaction fee on payments processed through the
+  platform (2 percent on Professional, 1 percent on Business), which is separate
+  from the subscription. There is no separate metered fee for API calls beyond
+  the documented rate limit. The legacy Basic tier was retired in 2024, so the
+  entry floor is now Professional. This is the community-software company at
+  circle.so, NOT the USDC / crypto company.
+notes: >-
+  Prices reflect published tiers as of the review date and are the
+  annual-billing monthly figure; monthly-billing rates are higher and Circle
+  Plus is custom-quoted. Verify current numbers on circle.so/pricing during
+  reconciliation.
+sources:
+- https://circle.so/pricing
+- https://api.circle.so/apis/admin-api
+- https://api.circle.so/apis/headless
+- https://help.circle.so/p/sso-and-integrations/api
+plans:
+- id: circle-professional
+  name: Professional
+  type: paid
+  description: >-
+    Entry tier for community, courses, and events. Does NOT include API access,
+    automations/workflows, white-label, or activity scores. Carries a 2 percent
+    transaction fee on payments.
+  entries:
+  - label: Professional Subscription
+    name: professional_subscription
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: '89'
+    userMultiplied: false
+  - label: Transaction Fee
+    name: professional_transaction_fee
+    type: usage
+    metric: percent
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: 2 percent of processed payments
+    userMultiplied: false
+  elements:
+  - name: Community and Discussions
+  - name: Courses
+  - name: Events
+  - name: No API Access
+- id: circle-business
+  name: Business
+  type: paid
+  description: >-
+    Adds the developer platform (Admin API plus the Headless Member API, Auth
+    API, and beta WebSocket), automations and workflows, white-label, activity
+    scores, more admins and spaces, higher storage, and a reduced 1 percent
+    transaction fee. This is the lowest tier with API access.
+  entries:
+  - label: Business Subscription
+    name: business_subscription
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: '199'
+    userMultiplied: false
+  - label: Transaction Fee
+    name: business_transaction_fee
+    type: usage
+    metric: percent
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: 1 percent of processed payments
+    userMultiplied: false
+  elements:
+  - name: Admin API
+  - name: Headless Member and Auth API
+  - name: WebSocket (Beta)
+  - name: Automations and Workflows
+  - name: White Label
+- id: circle-enterprise
+  name: Enterprise
+  type: paid
+  description: >-
+    Adds AI Agents, custom SSO, a branded mobile app, highest platform limits,
+    included Email Hub contacts, a sandbox community, concierge onboarding,
+    priority support, and a dedicated Customer Success Manager. Includes all
+    developer platform access.
+  entries:
+  - label: Enterprise Subscription
+    name: enterprise_subscription
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: '419'
+    userMultiplied: false
+  elements:
+  - name: Full Developer Platform
+  - name: AI Agents
+  - name: Custom SSO
+  - name: Branded Mobile App
+  - name: Dedicated CSM
+- id: circle-plus
+  name: Circle Plus
+  type: enterprise
+  description: >-
+    Custom-quoted top tier adding AI Agents and AI workflows, custom SSO, a
+    reduced 0.5 percent transaction fee, the headless member API, branded mobile
+    app options, and a dedicated CSM. Contact Circle for pricing.
+  entries:
+  - label: Circle Plus Agreement
+    name: circle_plus_agreement
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Headless Member API
+  - name: AI Agents and Workflows
+  - name: Reduced 0.5 Percent Fees
+  - name: Branded Mobile App Options
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

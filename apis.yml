@@ -1,0 +1,242 @@
+aid: circle-community
+url: https://raw.githubusercontent.com/api-evangelist/circle-community/refs/heads/main/apis.yml
+name: Circle
+kind: company
+description: >-
+  Circle (circle.so) is an all-in-one community platform for creators, coaches,
+  and brands - hosting discussions, courses, events, live streams, memberships,
+  paywalls, and chat under a single branded space. This is the community
+  software company at circle.so, NOT the USDC / stablecoin financial-services
+  company. Circle exposes a documented public developer platform: an
+  admin-authenticated Admin API (V2) for automations, migrations, and bulk
+  administration; a Headless offering (Member API plus Auth API) for embedding
+  Circle features into your own website or app via member-scoped JWT tokens; and
+  a beta ActionCable WebSocket surface for realtime chat and notifications. API
+  access is plan-gated to the Business plan and above.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Community
+- Creators
+- Courses
+- Memberships
+- Events
+- Chat
+- Community Platform
+created: '2026-07-05'
+modified: '2026-07-05'
+specificationVersion: '0.19'
+apis:
+- aid: circle-community:circle-community-admin-members-api
+  name: Circle Admin Members API
+  tags:
+  - Members
+  - Community Members
+  - Tags
+  - Access Groups
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://api.circle.so/apis/admin-api
+  baseURL: https://app.circle.so/api/admin/v2
+  properties:
+  - url: https://api.circle.so/apis/admin-api
+    type: Documentation
+  - url: https://api-headless.circle.so/?urls.primaryName=Admin+API+V2
+    type: APIReference
+  - url: openapi/circle-community-openapi.yml
+    type: OpenAPI
+  - url: collections/circle-community.postman_collection.json
+    type: PostmanCollection
+  - url: collections/circle-community.opencollection.json
+    type: OpenCollection
+  description: >-
+    Admin-authenticated management of community members - list, search, create,
+    update, ban, and delete members; manage member tags and tagged members; and
+    assign members to access groups. Uses a workspace-level API token in the
+    "Authorization: Token AUTH_TOKEN" header.
+- aid: circle-community:circle-community-admin-spaces-api
+  name: Circle Admin Spaces API
+  tags:
+  - Spaces
+  - Space Groups
+  - Space Members
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://api.circle.so/apis/admin-api
+  baseURL: https://app.circle.so/api/admin/v2
+  properties:
+  - url: https://api.circle.so/apis/admin-api
+    type: Documentation
+  - url: https://api-headless.circle.so/?urls.primaryName=Admin+API+V2
+    type: APIReference
+  - url: openapi/circle-community-openapi.yml
+    type: OpenAPI
+  - url: collections/circle-community.postman_collection.json
+    type: PostmanCollection
+  - url: collections/circle-community.opencollection.json
+    type: OpenCollection
+  description: >-
+    Manage the foundational containers of a community - spaces, space groups,
+    and their memberships. Create, list, get, update, and delete spaces and
+    space groups, and add or remove members from spaces and space groups
+    (single and bulk).
+- aid: circle-community:circle-community-admin-posts-api
+  name: Circle Admin Posts and Comments API
+  tags:
+  - Posts
+  - Comments
+  - Topics
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://api.circle.so/apis/admin-api
+  baseURL: https://app.circle.so/api/admin/v2
+  properties:
+  - url: https://api.circle.so/apis/admin-api
+    type: Documentation
+  - url: https://api-headless.circle.so/?urls.primaryName=Admin+API+V2
+    type: APIReference
+  - url: openapi/circle-community-openapi.yml
+    type: OpenAPI
+  - url: collections/circle-community.postman_collection.json
+    type: PostmanCollection
+  - url: collections/circle-community.opencollection.json
+    type: OpenCollection
+  description: >-
+    Create, list, retrieve, update, move, and delete posts across spaces, manage
+    the comments on those posts, generate AI post summaries, and administer
+    topics. Post parameters control publish/draft status, comment enablement,
+    and pinning.
+- aid: circle-community:circle-community-admin-events-api
+  name: Circle Admin Events API
+  tags:
+  - Events
+  - Attendees
+  - RSVP
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://api.circle.so/apis/admin-api
+  baseURL: https://app.circle.so/api/admin/v2
+  properties:
+  - url: https://api.circle.so/apis/admin-api
+    type: Documentation
+  - url: https://api-headless.circle.so/?urls.primaryName=Admin+API+V2
+    type: APIReference
+  - url: openapi/circle-community-openapi.yml
+    type: OpenAPI
+  - url: collections/circle-community.postman_collection.json
+    type: PostmanCollection
+  - url: collections/circle-community.opencollection.json
+    type: OpenCollection
+  description: >-
+    Create, list, get, update, duplicate, and delete community events, and
+    manage event attendees (add, list, remove). Events are scoped to a space and
+    support recurring configurations.
+- aid: circle-community:circle-community-admin-courses-api
+  name: Circle Admin Courses API
+  tags:
+  - Courses
+  - Lessons
+  - Sections
+  - Learning
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://api.circle.so/apis/admin-api
+  baseURL: https://app.circle.so/api/admin/v2
+  properties:
+  - url: https://api.circle.so/apis/admin-api
+    type: Documentation
+  - url: https://api-headless.circle.so/?urls.primaryName=Admin+API+V2
+    type: APIReference
+  - url: openapi/circle-community-openapi.yml
+    type: OpenAPI
+  - url: collections/circle-community.postman_collection.json
+    type: PostmanCollection
+  - url: collections/circle-community.opencollection.json
+    type: OpenCollection
+  description: >-
+    Administer course curricula - create, list, get, update, and delete course
+    sections and course lessons, and set a member's course lesson progress.
+    Backs the learning / cohort experiences built on Circle spaces.
+- aid: circle-community:circle-community-headless-member-api
+  name: Circle Headless Member API
+  tags:
+  - Headless
+  - Member API
+  - Feed
+  - Posts
+  - Messaging
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://api.circle.so/apis/headless/member-api
+  baseURL: https://app.circle.so/api/headless/v1
+  properties:
+  - url: https://api.circle.so/apis/headless
+    type: Documentation
+  - url: https://api-headless.circle.so/?urls.primaryName=Member+APIs
+    type: APIReference
+  - url: openapi/circle-community-openapi.yml
+    type: OpenAPI
+  - url: collections/circle-community.postman_collection.json
+    type: PostmanCollection
+  - url: collections/circle-community.opencollection.json
+    type: OpenCollection
+  description: >-
+    Member-authenticated server-side API for building your own member-facing
+    experience - home feed, spaces, posts, comments, likes and reactions,
+    bookmarks, community events and RSVPs, courses and lessons, direct
+    messages and chat rooms, notifications, and profile. Requests carry a
+    member-specific JWT access token (Bearer) issued by the Auth API.
+- aid: circle-community:circle-community-headless-auth-api
+  name: Circle Headless Auth API
+  tags:
+  - Headless
+  - Authentication
+  - JWT
+  - Tokens
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://api.circle.so/apis/headless/quick-start
+  baseURL: https://app.circle.so/api/v1/headless
+  properties:
+  - url: https://api.circle.so/apis/headless/quick-start
+    type: Documentation
+  - url: https://api-headless.circle.so/?urls.primaryName=Auth+APIs
+    type: APIReference
+  - url: openapi/circle-community-openapi.yml
+    type: OpenAPI
+  description: >-
+    Server-to-server authentication API that exchanges a community-level
+    headless auth token for a member-scoped JWT access token (and refresh
+    token) used to call the Member API. Access tokens expire after one hour and
+    are refreshed via the refresh token. Auth SDKs exist for Node.js, Ruby, Go,
+    and Python.
+- aid: circle-community:circle-community-realtime-websocket-api
+  name: Circle Realtime WebSocket API
+  tags:
+  - WebSocket
+  - Realtime
+  - Chat
+  - Notifications
+  - ActionCable
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://api.circle.so/get-started/websockets-beta
+  baseURL: wss://app.circle.so/cable
+  properties:
+  - url: https://api.circle.so/get-started/websockets-beta
+    type: Documentation
+  - url: asyncapi/circle-community-asyncapi.yml
+    type: AsyncAPI
+  description: >-
+    Beta ActionCable (Rails) WebSocket surface for realtime chat and
+    notifications, connected at wss://app.circle.so/cable with a member Bearer
+    access token and a whitelisted Origin header. Exposes a NotificationChannel
+    (new-notification and unread-count events) and three chat channels for
+    member-level room updates, room-wide messages, and thread events.
+common:
+- type: LinkedIn
+  url: https://www.linkedin.com/company/circleco
+- type: Website
+  url: https://circle.so
+- type: Documentation
+  url: https://api.circle.so
+- type: Plans
+  url: plans/circle-community-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/circle-community-rate-limits.yml
+- type: FinOps
+  url: finops/circle-community-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

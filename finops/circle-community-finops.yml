@@ -1,0 +1,94 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Circle
+providerId: circle-community
+created: '2026-07-05'
+modified: '2026-07-05'
+reconciled: false
+tags:
+- Community
+- Creators
+- Memberships
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of Circle (circle.so) spend. Circle is billed as a flat monthly
+  subscription per published tier (Professional, Business, Enterprise, Circle
+  Plus), NOT as metered API usage - so the dominant cost line is the plan
+  subscription rather than per-request charges. The developer platform (Admin
+  API, Headless Member/Auth API, WebSocket) is a feature unlocked by the
+  Business plan and above, meaning API access cost is effectively the delta of
+  moving up to the Business tier. A separate per-transaction fee applies to
+  payments processed through Circle (2 percent Professional, 1 percent Business,
+  0.5 percent Circle Plus), which scales with commerce volume. This is the
+  community-software company at circle.so, NOT the USDC / crypto company.
+notes: >-
+  Subscription rates and transaction-fee percentages reflect published tiers as
+  of the review date; verify on circle.so/pricing. There is no separate metered
+  API charge beyond the plan subscription and the documented rate limit.
+sources:
+- https://circle.so/pricing
+- https://api.circle.so/apis/admin-api
+- https://api.circle.so/apis/headless
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Circle
+serviceCategory: Community and Collaboration
+billingModel:
+  pricingCategory: Subscription-Based
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+  - Purchase
+  - Usage
+  - Adjustment
+focusColumns:
+  ServiceName: Circle
+  ServiceCategory: Community and Collaboration
+  ProviderName: Circle
+  PublisherName: Circle
+  InvoiceIssuerName: Circle
+  BillingCurrency: USD
+  ChargeCategory: Purchase
+  PricingCategory: Subscription-Based
+meters:
+- name: plan_subscription
+  description: Flat monthly platform subscription for the chosen Circle plan tier.
+  unit: subscription
+  aggregation: sum
+  dimensions:
+  - account
+  - plan
+- name: transaction_fee
+  description: Per-transaction percentage fee on payments processed through Circle (2 percent Professional, 1 percent Business, 0.5 percent Circle Plus).
+  unit: percent
+  aggregation: sum
+  dimensions:
+  - account
+  - plan
+- name: api_requests
+  description: Admin API requests, bounded by the 2000-per-5-minutes-per-IP rate limit; not separately billed.
+  unit: requests
+  aggregation: sum
+  dimensions:
+  - account
+  - ip
+principles:
+- name: Visibility
+  description: Track the plan subscription line and payment transaction fees; monitor Admin API usage in the Developers tab against the rate limit.
+- name: Allocation
+  description: Map the Circle subscription to the team or brand that owns the community; attribute transaction fees to the commerce it supports.
+- name: Optimization
+  description: Right-size the plan to the features actually used - move to Business only when API access, automations, or the lower 1 percent transaction fee justify the delta; consolidate communities to avoid duplicate subscriptions.
+- name: Accountability
+  description: Assign an owner for the Circle subscription and review tier, seat, storage, and transaction-fee costs against community value each billing cycle.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

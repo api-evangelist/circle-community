@@ -1,0 +1,65 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Circle
+providerId: circle-community
+created: '2026-07-05'
+modified: '2026-07-05'
+reconciled: false
+tags:
+- Community
+- Rate Limiting
+- Quotas
+- Admin API
+description: >-
+  Circle publishes a documented rate limit for the Admin API of 2000 requests
+  per 5 minutes per IP address (roughly 400 requests per minute), which Circle
+  notes can change at any time. Requests over the limit should be retried with a
+  backoff strategy rather than immediate retry. Admins can monitor their usage
+  in the Developers tab of the community admin area, where counts update roughly
+  5 minutes after calls due to backend caching. Circle does not publish a
+  distinct numeric limit for the Headless Member API or the beta WebSocket
+  surface as of the review date. Pagination defaults are page 1 and 10 items per
+  page.
+notes: >-
+  The 2000-per-5-minutes-per-IP figure is Circle's own stated Admin API limit
+  and is subject to change. Numeric limits for the Headless Member API and the
+  ActionCable WebSocket are not separately documented. Verify current values in
+  the Admin API "Usage and Limits" docs during reconciliation.
+sources:
+- https://api.circle.so/apis/admin-api
+- https://api.circle.so/apis/admin-api/usage-and-limits
+- https://api.circle.so/get-started/websockets-beta
+responseCodes:
+  throttled: 429
+limits:
+- name: Admin API Requests
+  scope: ip
+  metric: requests
+  limit: 2000 per 5 minutes per IP (~400/min)
+  notes: Circle's published Admin API rate limit; can change at any time.
+- name: Headless Member API Requests
+  scope: member
+  metric: requests
+  limit: not published
+  notes: No distinct numeric limit is documented for the member-authenticated API.
+- name: WebSocket Connections
+  scope: member
+  metric: connections
+  limit: not published
+  notes: ActionCable connections use a member access token that expires after 1 hour and must be refreshed.
+- name: Pagination
+  scope: request
+  metric: items
+  limit: per_page default 10 (page default 1)
+  notes: List endpoints paginate with page and per_page query parameters.
+policies:
+- name: Backoff Strategy
+  description: On a 429, retry with an exponential backoff strategy rather than retrying immediately.
+- name: Usage Monitoring
+  description: Track Admin API usage in the Developers tab of the admin area; counts update ~5 minutes after calls due to caching.
+- name: Token Expiry
+  description: Headless member access tokens (used for both the Member API and the WebSocket) expire after 1 hour and are refreshed via the Auth API refresh token.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
