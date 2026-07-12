@@ -1,0 +1,25 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/circle-community-openapi.yml
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - header
+schemes:
+- name: tokenAuth
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: Admin API token in the format "Token AUTH_TOKEN". Community admins generate the
+    token on the Developers -> Tokens page.
+  sources:
+  - openapi/circle-community-openapi.yml
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  description: Member-scoped JWT access token from /api/v1/headless/auth_token in the format
+    "Bearer ACCESS_TOKEN". Expires after one hour.
+  sources:
+  - openapi/circle-community-openapi.yml

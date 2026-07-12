@@ -225,6 +225,10 @@ apis:
     (new-notification and unread-count events) and three chat channels for
     member-level room updates, room-wide messages, and thread events.
 common:
+- type: DomainSecurity
+  url: security/circle-community-domain-security.yml
+- type: Authentication
+  url: authentication/circle-community-authentication.yml
 - type: LinkedIn
   url: https://www.linkedin.com/company/circleco
 - type: Website
