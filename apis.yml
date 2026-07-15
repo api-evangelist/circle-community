@@ -225,6 +225,8 @@ apis:
     (new-notification and unread-count events) and three chat channels for
     member-level room updates, room-wide messages, and thread events.
 common:
+- type: AgenticAccess
+  url: agentic-access/circle-community-agentic-access.yml
 - type: DomainSecurity
   url: security/circle-community-domain-security.yml
 - type: Authentication
