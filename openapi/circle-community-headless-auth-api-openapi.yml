@@ -1,0 +1,62 @@
+openapi: 3.0.3
+info:
+  title: Circle Developer Platform Admin - Courses Headless - Auth API
+  description: 'Circle (circle.so) is an all-in-one community platform for creators, coaches, and brands. This description grounds Circle''s documented public developer platform into a single OpenAPI file for discovery. It covers two admin- or member-authenticated REST surfaces: the Admin API V2 (base https://app.circle.so/api/admin/v2) for community administration and automation, and the Headless Member API (base https://app.circle.so/api/headless/v1) for building your own member-facing experience, plus the Headless Auth API token exchange. Admin API requests use an "Authorization: Token AUTH_TOKEN" header; Headless Member API requests use a member-scoped JWT in an "Authorization: Bearer ACCESS_TOKEN" header issued by the Auth API. API access is gated to the Business plan and above. This is the community-software company at circle.so, NOT the USDC / stablecoin financial-services company. Paths shown are a representative, grounded subset of the full reference published at api-headless.circle.so.'
+  version: '2.0'
+  contact:
+    name: Circle
+    url: https://circle.so
+  license:
+    name: Proprietary
+    url: https://circle.so/terms
+servers:
+- url: https://app.circle.so
+  description: Circle production
+security:
+- tokenAuth: []
+tags:
+- name: Headless - Auth
+  description: Member JWT token exchange for the Headless Member API.
+paths:
+  /api/v1/headless/auth_token:
+    post:
+      tags:
+      - Headless - Auth
+      summary: Exchange a headless auth token for a member JWT
+      description: Server-to-server exchange of a community-level headless auth token for a member-scoped JWT access token plus refresh token. Access tokens expire after one hour.
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: The issued access and refresh tokens.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HeadlessAuthToken'
+components:
+  schemas:
+    HeadlessAuthToken:
+      type: object
+      properties:
+        access_token:
+          type: string
+        refresh_token:
+          type: string
+        access_token_expires_at:
+          type: string
+        refresh_token_expires_at:
+          type: string
+        community_member_id:
+          type: integer
+        community_id:
+          type: integer
+  securitySchemes:
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Admin API token in the format "Token AUTH_TOKEN". Community admins generate the token on the Developers -> Tokens page.
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Member-scoped JWT access token from /api/v1/headless/auth_token in the format "Bearer ACCESS_TOKEN". Expires after one hour.

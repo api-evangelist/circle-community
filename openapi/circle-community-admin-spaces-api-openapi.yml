@@ -1,0 +1,131 @@
+openapi: 3.0.3
+info:
+  title: Circle Developer Platform Admin - Courses Admin - Spaces API
+  description: 'Circle (circle.so) is an all-in-one community platform for creators, coaches, and brands. This description grounds Circle''s documented public developer platform into a single OpenAPI file for discovery. It covers two admin- or member-authenticated REST surfaces: the Admin API V2 (base https://app.circle.so/api/admin/v2) for community administration and automation, and the Headless Member API (base https://app.circle.so/api/headless/v1) for building your own member-facing experience, plus the Headless Auth API token exchange. Admin API requests use an "Authorization: Token AUTH_TOKEN" header; Headless Member API requests use a member-scoped JWT in an "Authorization: Bearer ACCESS_TOKEN" header issued by the Auth API. API access is gated to the Business plan and above. This is the community-software company at circle.so, NOT the USDC / stablecoin financial-services company. Paths shown are a representative, grounded subset of the full reference published at api-headless.circle.so.'
+  version: '2.0'
+  contact:
+    name: Circle
+    url: https://circle.so
+  license:
+    name: Proprietary
+    url: https://circle.so/terms
+servers:
+- url: https://app.circle.so
+  description: Circle production
+security:
+- tokenAuth: []
+tags:
+- name: Admin - Spaces
+  description: Spaces, space groups, and their memberships.
+paths:
+  /api/admin/v2/spaces:
+    get:
+      tags:
+      - Admin - Spaces
+      summary: List spaces
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: A page of spaces.
+    post:
+      tags:
+      - Admin - Spaces
+      summary: Create a space
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: The created space.
+  /api/admin/v2/spaces/{id}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+    get:
+      tags:
+      - Admin - Spaces
+      summary: Retrieve a space
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: The space.
+    put:
+      tags:
+      - Admin - Spaces
+      summary: Update a space
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: The updated space.
+    delete:
+      tags:
+      - Admin - Spaces
+      summary: Delete a space
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: Deletion result.
+  /api/admin/v2/space_groups:
+    get:
+      tags:
+      - Admin - Spaces
+      summary: List space groups
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: A page of space groups.
+    post:
+      tags:
+      - Admin - Spaces
+      summary: Create a space group
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: The created space group.
+  /api/admin/v2/space_members:
+    get:
+      tags:
+      - Admin - Spaces
+      summary: List space members
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: A page of space members.
+    post:
+      tags:
+      - Admin - Spaces
+      summary: Add a member to a space
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: The added space member.
+    delete:
+      tags:
+      - Admin - Spaces
+      summary: Remove a member from a space
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: Removal result.
+components:
+  securitySchemes:
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Admin API token in the format "Token AUTH_TOKEN". Community admins generate the token on the Developers -> Tokens page.
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Member-scoped JWT access token from /api/v1/headless/auth_token in the format "Bearer ACCESS_TOKEN". Expires after one hour.

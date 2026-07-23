@@ -1,0 +1,174 @@
+openapi: 3.0.3
+info:
+  title: Circle Developer Platform Admin - Courses Admin - Posts API
+  description: 'Circle (circle.so) is an all-in-one community platform for creators, coaches, and brands. This description grounds Circle''s documented public developer platform into a single OpenAPI file for discovery. It covers two admin- or member-authenticated REST surfaces: the Admin API V2 (base https://app.circle.so/api/admin/v2) for community administration and automation, and the Headless Member API (base https://app.circle.so/api/headless/v1) for building your own member-facing experience, plus the Headless Auth API token exchange. Admin API requests use an "Authorization: Token AUTH_TOKEN" header; Headless Member API requests use a member-scoped JWT in an "Authorization: Bearer ACCESS_TOKEN" header issued by the Auth API. API access is gated to the Business plan and above. This is the community-software company at circle.so, NOT the USDC / stablecoin financial-services company. Paths shown are a representative, grounded subset of the full reference published at api-headless.circle.so.'
+  version: '2.0'
+  contact:
+    name: Circle
+    url: https://circle.so
+  license:
+    name: Proprietary
+    url: https://circle.so/terms
+servers:
+- url: https://app.circle.so
+  description: Circle production
+security:
+- tokenAuth: []
+tags:
+- name: Admin - Posts
+  description: Posts, comments, and topics.
+paths:
+  /api/admin/v2/posts:
+    get:
+      tags:
+      - Admin - Posts
+      summary: List posts
+      security:
+      - tokenAuth: []
+      parameters:
+      - name: page
+        in: query
+        schema:
+          type: integer
+          default: 1
+      - name: per_page
+        in: query
+        schema:
+          type: integer
+          default: 10
+      responses:
+        '200':
+          description: A page of posts.
+    post:
+      tags:
+      - Admin - Posts
+      summary: Create a post
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: The created post.
+  /api/admin/v2/posts/{id}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+    get:
+      tags:
+      - Admin - Posts
+      summary: Retrieve a post
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: The post.
+    put:
+      tags:
+      - Admin - Posts
+      summary: Update or move a post
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: The updated post.
+    delete:
+      tags:
+      - Admin - Posts
+      summary: Delete a post
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: Deletion result.
+  /api/admin/v2/posts/{post_id}/summary:
+    get:
+      tags:
+      - Admin - Posts
+      summary: Get an AI summary of a post
+      security:
+      - tokenAuth: []
+      parameters:
+      - name: post_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: The post summary.
+  /api/admin/v2/comments:
+    get:
+      tags:
+      - Admin - Posts
+      summary: List comments
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: A page of comments.
+    post:
+      tags:
+      - Admin - Posts
+      summary: Create a comment
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: The created comment.
+  /api/admin/v2/comments/{id}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+    get:
+      tags:
+      - Admin - Posts
+      summary: Retrieve a comment
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: The comment.
+    delete:
+      tags:
+      - Admin - Posts
+      summary: Delete a comment
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: Deletion result.
+  /api/admin/v2/topics:
+    get:
+      tags:
+      - Admin - Posts
+      summary: List topics
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: A page of topics.
+    post:
+      tags:
+      - Admin - Posts
+      summary: Create a topic
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: The created topic.
+components:
+  securitySchemes:
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Admin API token in the format "Token AUTH_TOKEN". Community admins generate the token on the Developers -> Tokens page.
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Member-scoped JWT access token from /api/v1/headless/auth_token in the format "Bearer ACCESS_TOKEN". Expires after one hour.

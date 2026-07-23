@@ -1,0 +1,112 @@
+openapi: 3.0.3
+info:
+  title: Circle Developer Platform Admin - Courses Admin - Events API
+  description: 'Circle (circle.so) is an all-in-one community platform for creators, coaches, and brands. This description grounds Circle''s documented public developer platform into a single OpenAPI file for discovery. It covers two admin- or member-authenticated REST surfaces: the Admin API V2 (base https://app.circle.so/api/admin/v2) for community administration and automation, and the Headless Member API (base https://app.circle.so/api/headless/v1) for building your own member-facing experience, plus the Headless Auth API token exchange. Admin API requests use an "Authorization: Token AUTH_TOKEN" header; Headless Member API requests use a member-scoped JWT in an "Authorization: Bearer ACCESS_TOKEN" header issued by the Auth API. API access is gated to the Business plan and above. This is the community-software company at circle.so, NOT the USDC / stablecoin financial-services company. Paths shown are a representative, grounded subset of the full reference published at api-headless.circle.so.'
+  version: '2.0'
+  contact:
+    name: Circle
+    url: https://circle.so
+  license:
+    name: Proprietary
+    url: https://circle.so/terms
+servers:
+- url: https://app.circle.so
+  description: Circle production
+security:
+- tokenAuth: []
+tags:
+- name: Admin - Events
+  description: Events and event attendees.
+paths:
+  /api/admin/v2/events:
+    get:
+      tags:
+      - Admin - Events
+      summary: List events
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: A page of events.
+    post:
+      tags:
+      - Admin - Events
+      summary: Create an event
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: The created event.
+  /api/admin/v2/events/{id}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+    get:
+      tags:
+      - Admin - Events
+      summary: Retrieve an event
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: The event.
+    put:
+      tags:
+      - Admin - Events
+      summary: Update an event
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: The updated event.
+    delete:
+      tags:
+      - Admin - Events
+      summary: Delete an event
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: Deletion result.
+  /api/admin/v2/event_attendees:
+    get:
+      tags:
+      - Admin - Events
+      summary: List event attendees
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: A page of attendees.
+    post:
+      tags:
+      - Admin - Events
+      summary: Add an event attendee
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: The added attendee.
+    delete:
+      tags:
+      - Admin - Events
+      summary: Remove an event attendee
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: Removal result.
+components:
+  securitySchemes:
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Admin API token in the format "Token AUTH_TOKEN". Community admins generate the token on the Developers -> Tokens page.
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Member-scoped JWT access token from /api/v1/headless/auth_token in the format "Bearer ACCESS_TOKEN". Expires after one hour.

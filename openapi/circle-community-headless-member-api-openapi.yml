@@ -1,0 +1,278 @@
+openapi: 3.0.3
+info:
+  title: Circle Developer Platform Admin - Courses Headless - Member API
+  description: 'Circle (circle.so) is an all-in-one community platform for creators, coaches, and brands. This description grounds Circle''s documented public developer platform into a single OpenAPI file for discovery. It covers two admin- or member-authenticated REST surfaces: the Admin API V2 (base https://app.circle.so/api/admin/v2) for community administration and automation, and the Headless Member API (base https://app.circle.so/api/headless/v1) for building your own member-facing experience, plus the Headless Auth API token exchange. Admin API requests use an "Authorization: Token AUTH_TOKEN" header; Headless Member API requests use a member-scoped JWT in an "Authorization: Bearer ACCESS_TOKEN" header issued by the Auth API. API access is gated to the Business plan and above. This is the community-software company at circle.so, NOT the USDC / stablecoin financial-services company. Paths shown are a representative, grounded subset of the full reference published at api-headless.circle.so.'
+  version: '2.0'
+  contact:
+    name: Circle
+    url: https://circle.so
+  license:
+    name: Proprietary
+    url: https://circle.so/terms
+servers:
+- url: https://app.circle.so
+  description: Circle production
+security:
+- tokenAuth: []
+tags:
+- name: Headless - Member
+  description: Member-authenticated experience endpoints.
+paths:
+  /api/headless/v1/home:
+    get:
+      tags:
+      - Headless - Member
+      summary: Get the member home feed
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: The member's home feed.
+  /api/headless/v1/spaces:
+    get:
+      tags:
+      - Headless - Member
+      summary: List spaces visible to the member
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: The member's spaces.
+  /api/headless/v1/spaces/{id}/join:
+    post:
+      tags:
+      - Headless - Member
+      summary: Join a space
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Join result.
+  /api/headless/v1/spaces/{space_id}/posts:
+    get:
+      tags:
+      - Headless - Member
+      summary: List posts in a space
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: space_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: A page of posts.
+    post:
+      tags:
+      - Headless - Member
+      summary: Create a post in a space
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: space_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: The created post.
+  /api/headless/v1/posts/{post_id}/comments:
+    get:
+      tags:
+      - Headless - Member
+      summary: List comments on a post
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: post_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: A page of comments.
+    post:
+      tags:
+      - Headless - Member
+      summary: Comment on a post
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: post_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: The created comment.
+  /api/headless/v1/posts/{post_id}/user_likes:
+    post:
+      tags:
+      - Headless - Member
+      summary: Like a post
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: post_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Like result.
+  /api/headless/v1/community_events:
+    get:
+      tags:
+      - Headless - Member
+      summary: List community events
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: A page of community events.
+  /api/headless/v1/events/{event_id}/event_attendees:
+    post:
+      tags:
+      - Headless - Member
+      summary: RSVP to an event
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: event_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: The RSVP.
+  /api/headless/v1/courses/{course_id}/sections:
+    get:
+      tags:
+      - Headless - Member
+      summary: List course sections
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: course_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: The course sections.
+  /api/headless/v1/courses/{course_id}/lessons/{id}:
+    get:
+      tags:
+      - Headless - Member
+      summary: Get a course lesson
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: course_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: The course lesson.
+  /api/headless/v1/messages:
+    get:
+      tags:
+      - Headless - Member
+      summary: List chat rooms / direct messages
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: The member's chat rooms.
+    post:
+      tags:
+      - Headless - Member
+      summary: Start a chat room / direct message
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: The created chat room.
+  /api/headless/v1/messages/{chat_room_uuid}/chat_room_messages:
+    get:
+      tags:
+      - Headless - Member
+      summary: List messages in a chat room
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: chat_room_uuid
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A page of chat messages.
+    post:
+      tags:
+      - Headless - Member
+      summary: Send a message to a chat room
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: chat_room_uuid
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The sent message.
+  /api/headless/v1/notifications:
+    get:
+      tags:
+      - Headless - Member
+      summary: List notifications
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: A page of notifications.
+  /api/headless/v1/profile:
+    put:
+      tags:
+      - Headless - Member
+      summary: Update the member profile
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: The updated profile.
+components:
+  securitySchemes:
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Admin API token in the format "Token AUTH_TOKEN". Community admins generate the token on the Developers -> Tokens page.
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Member-scoped JWT access token from /api/v1/headless/auth_token in the format "Bearer ACCESS_TOKEN". Expires after one hour.

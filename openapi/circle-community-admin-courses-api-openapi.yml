@@ -1,0 +1,113 @@
+openapi: 3.0.3
+info:
+  title: Circle Developer Platform Admin - Courses API
+  description: 'Circle (circle.so) is an all-in-one community platform for creators, coaches, and brands. This description grounds Circle''s documented public developer platform into a single OpenAPI file for discovery. It covers two admin- or member-authenticated REST surfaces: the Admin API V2 (base https://app.circle.so/api/admin/v2) for community administration and automation, and the Headless Member API (base https://app.circle.so/api/headless/v1) for building your own member-facing experience, plus the Headless Auth API token exchange. Admin API requests use an "Authorization: Token AUTH_TOKEN" header; Headless Member API requests use a member-scoped JWT in an "Authorization: Bearer ACCESS_TOKEN" header issued by the Auth API. API access is gated to the Business plan and above. This is the community-software company at circle.so, NOT the USDC / stablecoin financial-services company. Paths shown are a representative, grounded subset of the full reference published at api-headless.circle.so.'
+  version: '2.0'
+  contact:
+    name: Circle
+    url: https://circle.so
+  license:
+    name: Proprietary
+    url: https://circle.so/terms
+servers:
+- url: https://app.circle.so
+  description: Circle production
+security:
+- tokenAuth: []
+tags:
+- name: Admin - Courses
+  description: Course sections, lessons, and progress.
+paths:
+  /api/admin/v2/course_sections:
+    get:
+      tags:
+      - Admin - Courses
+      summary: List course sections
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: A page of course sections.
+    post:
+      tags:
+      - Admin - Courses
+      summary: Create a course section
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: The created section.
+  /api/admin/v2/course_lessons:
+    get:
+      tags:
+      - Admin - Courses
+      summary: List course lessons
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: A page of course lessons.
+    post:
+      tags:
+      - Admin - Courses
+      summary: Create a course lesson
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: The created lesson.
+  /api/admin/v2/course_lessons/{id}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+    get:
+      tags:
+      - Admin - Courses
+      summary: Retrieve a course lesson
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: The course lesson.
+    patch:
+      tags:
+      - Admin - Courses
+      summary: Update a course lesson
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: The updated lesson.
+    delete:
+      tags:
+      - Admin - Courses
+      summary: Delete a course lesson
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: Deletion result.
+  /api/admin/v2/course_lesson_progress:
+    put:
+      tags:
+      - Admin - Courses
+      summary: Set a member's course lesson progress
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: Updated progress.
+components:
+  securitySchemes:
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Admin API token in the format "Token AUTH_TOKEN". Community admins generate the token on the Developers -> Tokens page.
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Member-scoped JWT access token from /api/v1/headless/auth_token in the format "Bearer ACCESS_TOKEN". Expires after one hour.

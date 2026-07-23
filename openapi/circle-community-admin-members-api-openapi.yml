@@ -1,0 +1,168 @@
+openapi: 3.0.3
+info:
+  title: Circle Developer Platform Admin - Courses Admin - Members API
+  description: 'Circle (circle.so) is an all-in-one community platform for creators, coaches, and brands. This description grounds Circle''s documented public developer platform into a single OpenAPI file for discovery. It covers two admin- or member-authenticated REST surfaces: the Admin API V2 (base https://app.circle.so/api/admin/v2) for community administration and automation, and the Headless Member API (base https://app.circle.so/api/headless/v1) for building your own member-facing experience, plus the Headless Auth API token exchange. Admin API requests use an "Authorization: Token AUTH_TOKEN" header; Headless Member API requests use a member-scoped JWT in an "Authorization: Bearer ACCESS_TOKEN" header issued by the Auth API. API access is gated to the Business plan and above. This is the community-software company at circle.so, NOT the USDC / stablecoin financial-services company. Paths shown are a representative, grounded subset of the full reference published at api-headless.circle.so.'
+  version: '2.0'
+  contact:
+    name: Circle
+    url: https://circle.so
+  license:
+    name: Proprietary
+    url: https://circle.so/terms
+servers:
+- url: https://app.circle.so
+  description: Circle production
+security:
+- tokenAuth: []
+tags:
+- name: Admin - Members
+  description: Admin-authenticated community member management.
+paths:
+  /api/admin/v2/community_members:
+    get:
+      tags:
+      - Admin - Members
+      summary: List community members
+      security:
+      - tokenAuth: []
+      parameters:
+      - name: page
+        in: query
+        schema:
+          type: integer
+          default: 1
+      - name: per_page
+        in: query
+        schema:
+          type: integer
+          default: 10
+      responses:
+        '200':
+          description: A page of community members.
+    post:
+      tags:
+      - Admin - Members
+      summary: Invite or create a community member
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: The created or invited member.
+  /api/admin/v2/community_members/search:
+    get:
+      tags:
+      - Admin - Members
+      summary: Search community members
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: Matching community members.
+  /api/admin/v2/community_members/{id}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+    get:
+      tags:
+      - Admin - Members
+      summary: Retrieve a community member
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: The community member.
+    put:
+      tags:
+      - Admin - Members
+      summary: Update a community member
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: The updated member.
+    delete:
+      tags:
+      - Admin - Members
+      summary: Delete a community member
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: Deletion result.
+  /api/admin/v2/community_members/{id}/ban_member:
+    put:
+      tags:
+      - Admin - Members
+      summary: Ban a community member
+      security:
+      - tokenAuth: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Ban result.
+  /api/admin/v2/member_tags:
+    get:
+      tags:
+      - Admin - Members
+      summary: List member tags
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: A page of member tags.
+    post:
+      tags:
+      - Admin - Members
+      summary: Create a member tag
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: The created member tag.
+  /api/admin/v2/tagged_members:
+    get:
+      tags:
+      - Admin - Members
+      summary: List tagged members
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: Members carrying a given tag.
+    post:
+      tags:
+      - Admin - Members
+      summary: Apply a tag to a member
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: The tag assignment.
+    delete:
+      tags:
+      - Admin - Members
+      summary: Remove a tag from a member
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: Removal result.
+components:
+  securitySchemes:
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Admin API token in the format "Token AUTH_TOKEN". Community admins generate the token on the Developers -> Tokens page.
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Member-scoped JWT access token from /api/v1/headless/auth_token in the format "Bearer ACCESS_TOKEN". Expires after one hour.
