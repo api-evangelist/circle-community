@@ -1,0 +1,26 @@
+{
+  "provider": "circle-community",
+  "sources": [
+    "circle-community-admin-courses-api-openapi.yml",
+    "circle-community-admin-events-api-openapi.yml",
+    "circle-community-admin-members-api-openapi.yml",
+    "circle-community-admin-posts-api-openapi.yml",
+    "circle-community-admin-spaces-api-openapi.yml",
+    "circle-community-headless-auth-api-openapi.yml",
+    "circle-community-headless-member-api-openapi.yml"
+  ],
+  "outputs": [
+    "circle-community-admin-courses-api-openapi.yml",
+    "circle-community-admin-events-api-openapi.yml",
+    "circle-community-admin-members-api-openapi.yml",
+    "circle-community-admin-posts-api-openapi.yml",
+    "circle-community-admin-spaces-api-openapi.yml",
+    "circle-community-headless-auth-api-openapi.yml",
+    "circle-community-headless-member-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
