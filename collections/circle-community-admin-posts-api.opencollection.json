@@ -1,0 +1,284 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Circle Developer Platform Admin - Courses Admin - Posts API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Admin - Posts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List posts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.circle.so/api/admin/v2/posts",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List posts"
+        },
+        {
+          "info": {
+            "name": "Create a post",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.circle.so/api/admin/v2/posts",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create a post"
+        },
+        {
+          "info": {
+            "name": "Retrieve a post",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.circle.so/api/admin/v2/posts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve a post"
+        },
+        {
+          "info": {
+            "name": "Update or move a post",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://app.circle.so/api/admin/v2/posts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update or move a post"
+        },
+        {
+          "info": {
+            "name": "Delete a post",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://app.circle.so/api/admin/v2/posts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete a post"
+        },
+        {
+          "info": {
+            "name": "Get an AI summary of a post",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.circle.so/api/admin/v2/posts/:post_id/summary",
+            "params": [
+              {
+                "name": "post_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get an AI summary of a post"
+        },
+        {
+          "info": {
+            "name": "List comments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.circle.so/api/admin/v2/comments",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List comments"
+        },
+        {
+          "info": {
+            "name": "Create a comment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.circle.so/api/admin/v2/comments",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create a comment"
+        },
+        {
+          "info": {
+            "name": "Retrieve a comment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.circle.so/api/admin/v2/comments/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve a comment"
+        },
+        {
+          "info": {
+            "name": "Delete a comment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://app.circle.so/api/admin/v2/comments/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete a comment"
+        },
+        {
+          "info": {
+            "name": "List topics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.circle.so/api/admin/v2/topics",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List topics"
+        },
+        {
+          "info": {
+            "name": "Create a topic",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.circle.so/api/admin/v2/topics",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create a topic"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

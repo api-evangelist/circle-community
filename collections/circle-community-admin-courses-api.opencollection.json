@@ -1,0 +1,183 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Circle Developer Platform Admin - Courses API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Admin - Courses",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List course sections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.circle.so/api/admin/v2/course_sections",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List course sections"
+        },
+        {
+          "info": {
+            "name": "Create a course section",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.circle.so/api/admin/v2/course_sections",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create a course section"
+        },
+        {
+          "info": {
+            "name": "List course lessons",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.circle.so/api/admin/v2/course_lessons",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List course lessons"
+        },
+        {
+          "info": {
+            "name": "Create a course lesson",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.circle.so/api/admin/v2/course_lessons",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create a course lesson"
+        },
+        {
+          "info": {
+            "name": "Retrieve a course lesson",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.circle.so/api/admin/v2/course_lessons/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve a course lesson"
+        },
+        {
+          "info": {
+            "name": "Update a course lesson",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://app.circle.so/api/admin/v2/course_lessons/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update a course lesson"
+        },
+        {
+          "info": {
+            "name": "Delete a course lesson",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://app.circle.so/api/admin/v2/course_lessons/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete a course lesson"
+        },
+        {
+          "info": {
+            "name": "Set a member's course lesson progress",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://app.circle.so/api/admin/v2/course_lesson_progress",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Set a member's course lesson progress"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

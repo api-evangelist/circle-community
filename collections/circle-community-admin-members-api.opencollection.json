@@ -1,0 +1,270 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Circle Developer Platform Admin - Courses Admin - Members API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Admin - Members",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List community members",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.circle.so/api/admin/v2/community_members",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List community members"
+        },
+        {
+          "info": {
+            "name": "Invite or create a community member",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.circle.so/api/admin/v2/community_members",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Invite or create a community member"
+        },
+        {
+          "info": {
+            "name": "Search community members",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.circle.so/api/admin/v2/community_members/search",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Search community members"
+        },
+        {
+          "info": {
+            "name": "Retrieve a community member",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.circle.so/api/admin/v2/community_members/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve a community member"
+        },
+        {
+          "info": {
+            "name": "Update a community member",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://app.circle.so/api/admin/v2/community_members/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update a community member"
+        },
+        {
+          "info": {
+            "name": "Delete a community member",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://app.circle.so/api/admin/v2/community_members/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete a community member"
+        },
+        {
+          "info": {
+            "name": "Ban a community member",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://app.circle.so/api/admin/v2/community_members/:id/ban_member",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Ban a community member"
+        },
+        {
+          "info": {
+            "name": "List member tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.circle.so/api/admin/v2/member_tags",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List member tags"
+        },
+        {
+          "info": {
+            "name": "Create a member tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.circle.so/api/admin/v2/member_tags",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create a member tag"
+        },
+        {
+          "info": {
+            "name": "List tagged members",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.circle.so/api/admin/v2/tagged_members",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List tagged members"
+        },
+        {
+          "info": {
+            "name": "Apply a tag to a member",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.circle.so/api/admin/v2/tagged_members",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Apply a tag to a member"
+        },
+        {
+          "info": {
+            "name": "Remove a tag from a member",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://app.circle.so/api/admin/v2/tagged_members",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Remove a tag from a member"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

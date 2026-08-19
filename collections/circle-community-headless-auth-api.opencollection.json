@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Circle Developer Platform Admin - Courses Headless - Auth API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Headless - Auth",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Exchange a headless auth token for a member JWT",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.circle.so/api/v1/headless/auth_token",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Server-to-server exchange of a community-level headless auth token for a member-scoped JWT access token plus refresh token. Access tokens expire after one hour."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

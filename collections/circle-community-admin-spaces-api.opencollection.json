@@ -1,0 +1,217 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Circle Developer Platform Admin - Courses Admin - Spaces API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Admin - Spaces",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List spaces",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.circle.so/api/admin/v2/spaces",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List spaces"
+        },
+        {
+          "info": {
+            "name": "Create a space",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.circle.so/api/admin/v2/spaces",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create a space"
+        },
+        {
+          "info": {
+            "name": "Retrieve a space",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.circle.so/api/admin/v2/spaces/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve a space"
+        },
+        {
+          "info": {
+            "name": "Update a space",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://app.circle.so/api/admin/v2/spaces/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update a space"
+        },
+        {
+          "info": {
+            "name": "Delete a space",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://app.circle.so/api/admin/v2/spaces/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete a space"
+        },
+        {
+          "info": {
+            "name": "List space groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.circle.so/api/admin/v2/space_groups",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List space groups"
+        },
+        {
+          "info": {
+            "name": "Create a space group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.circle.so/api/admin/v2/space_groups",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create a space group"
+        },
+        {
+          "info": {
+            "name": "List space members",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.circle.so/api/admin/v2/space_members",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List space members"
+        },
+        {
+          "info": {
+            "name": "Add a member to a space",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.circle.so/api/admin/v2/space_members",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Add a member to a space"
+        },
+        {
+          "info": {
+            "name": "Remove a member from a space",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://app.circle.so/api/admin/v2/space_members",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Remove a member from a space"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

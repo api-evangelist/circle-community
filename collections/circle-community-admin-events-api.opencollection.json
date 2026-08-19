@@ -1,0 +1,183 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Circle Developer Platform Admin - Courses Admin - Events API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Admin - Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.circle.so/api/admin/v2/events",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List events"
+        },
+        {
+          "info": {
+            "name": "Create an event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.circle.so/api/admin/v2/events",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create an event"
+        },
+        {
+          "info": {
+            "name": "Retrieve an event",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.circle.so/api/admin/v2/events/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve an event"
+        },
+        {
+          "info": {
+            "name": "Update an event",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://app.circle.so/api/admin/v2/events/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update an event"
+        },
+        {
+          "info": {
+            "name": "Delete an event",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://app.circle.so/api/admin/v2/events/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete an event"
+        },
+        {
+          "info": {
+            "name": "List event attendees",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.circle.so/api/admin/v2/event_attendees",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List event attendees"
+        },
+        {
+          "info": {
+            "name": "Add an event attendee",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.circle.so/api/admin/v2/event_attendees",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Add an event attendee"
+        },
+        {
+          "info": {
+            "name": "Remove an event attendee",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://app.circle.so/api/admin/v2/event_attendees",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Remove an event attendee"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

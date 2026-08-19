@@ -1,0 +1,141 @@
+{
+  "item": [
+    {
+      "id": "cd599ae4-c095-482b-9ea3-029b08b7e7c5",
+      "name": "Headless - Auth",
+      "description": {
+        "content": "Member JWT token exchange for the Headless Member API.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5be93be3-04e9-4158-9d4c-eeb87799d02f",
+          "name": "Exchange a headless auth token for a member JWT",
+          "request": {
+            "name": "Exchange a headless auth token for a member JWT",
+            "description": {
+              "content": "Server-to-server exchange of a community-level headless auth token for a member-scoped JWT access token plus refresh token. Access tokens expire after one hour.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "headless",
+                "auth_token"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b30e48b1-6a06-4553-b0c0-5802d2309d72",
+              "name": "The issued access and refresh tokens.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "headless",
+                    "auth_token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"access_token\": \"string\",\n  \"refresh_token\": \"string\",\n  \"access_token_expires_at\": \"string\",\n  \"refresh_token_expires_at\": \"string\",\n  \"community_member_id\": 6629,\n  \"community_id\": 9489\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://app.circle.so",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a2cfb75a-4856-41bb-bc5a-f931e8e21fde",
+    "name": "Circle Developer Platform Admin - Courses Headless - Auth API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Circle (circle.so) is an all-in-one community platform for creators, coaches, and brands. This description grounds Circle's documented public developer platform into a single OpenAPI file for discovery. It covers two admin- or member-authenticated REST surfaces: the Admin API V2 (base https://app.circle.so/api/admin/v2) for community administration and automation, and the Headless Member API (base https://app.circle.so/api/headless/v1) for building your own member-facing experience, plus the Headless Auth API token exchange. Admin API requests use an \"Authorization: Token AUTH_TOKEN\" header; Headless Member API requests use a member-scoped JWT in an \"Authorization: Bearer ACCESS_TOKEN\" header issued by the Auth API. API access is gated to the Business plan and above. This is the community-software company at circle.so, NOT the USDC / stablecoin financial-services company. Paths shown are a representative, grounded subset of the full reference published at api-headless.circle.so.\n\nContact Support:\n Name: Circle",
+      "type": "text/plain"
+    }
+  }
+}
