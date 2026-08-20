@@ -32,6 +32,14 @@ tags:
 - Creators
 - Courses
 - Memberships
+- Event
+- Chat
+- Community Platform
+tags_raw:
+- Community
+- Creators
+- Courses
+- Memberships
 - Events
 - Chat
 - Community Platform
@@ -42,6 +50,12 @@ apis:
 - aid: circle-community:circle-community-realtime-websocket-api
   name: Circle Realtime WebSocket API
   tags:
+  - WebSocket
+  - Real-Time
+  - Chat
+  - Notification
+  - ActionCable
+  tags_raw:
   - WebSocket
   - Realtime
   - Chat
