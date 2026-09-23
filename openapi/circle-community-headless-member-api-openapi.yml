@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Circle Developer Platform Admin - Courses Headless - Member API
-  description: 'Circle (circle.so) is an all-in-one community platform for creators, coaches, and brands. This description grounds Circle''s documented public developer platform into a single OpenAPI file for discovery. It covers two admin- or member-authenticated REST surfaces: the Admin API V2 (base https://app.circle.so/api/admin/v2) for community administration and automation, and the Headless Member API (base https://app.circle.so/api/headless/v1) for building your own member-facing experience, plus the Headless Auth API token exchange. Admin API requests use an "Authorization: Token AUTH_TOKEN" header; Headless Member API requests use a member-scoped JWT in an "Authorization: Bearer ACCESS_TOKEN" header issued by the Auth API. API access is gated to the Business plan and above. This is the community-software company at circle.so, NOT the USDC / stablecoin financial-services company. Paths shown are a representative, grounded subset of the full reference published at api-headless.circle.so.'
+  title: Circle Developer Platform Headless - Member API
+  description: Circle (circle.so) is an all-in-one community platform for creators, coaches, and brands.
   version: '2.0'
   contact:
     name: Circle
@@ -28,6 +28,8 @@ paths:
       responses:
         '200':
           description: The member's home feed.
+      operationId: getApiHeadlessV1Home
+      x-operation-id-source: derived
   /api/headless/v1/spaces:
     get:
       tags:
@@ -38,6 +40,8 @@ paths:
       responses:
         '200':
           description: The member's spaces.
+      operationId: getApiHeadlessV1Spaces
+      x-operation-id-source: derived
   /api/headless/v1/spaces/{id}/join:
     post:
       tags:
@@ -54,6 +58,8 @@ paths:
       responses:
         '200':
           description: Join result.
+      operationId: postApiHeadlessV1SpacesByIdJoin
+      x-operation-id-source: derived
   /api/headless/v1/spaces/{space_id}/posts:
     get:
       tags:
@@ -70,6 +76,8 @@ paths:
       responses:
         '200':
           description: A page of posts.
+      operationId: getApiHeadlessV1SpacesBySpaceIdPosts
+      x-operation-id-source: derived
     post:
       tags:
       - Headless - Member
@@ -85,6 +93,8 @@ paths:
       responses:
         '200':
           description: The created post.
+      operationId: postApiHeadlessV1SpacesBySpaceIdPosts
+      x-operation-id-source: derived
   /api/headless/v1/posts/{post_id}/comments:
     get:
       tags:
@@ -101,6 +111,8 @@ paths:
       responses:
         '200':
           description: A page of comments.
+      operationId: getApiHeadlessV1PostsByPostIdComments
+      x-operation-id-source: derived
     post:
       tags:
       - Headless - Member
@@ -116,6 +128,8 @@ paths:
       responses:
         '200':
           description: The created comment.
+      operationId: postApiHeadlessV1PostsByPostIdComments
+      x-operation-id-source: derived
   /api/headless/v1/posts/{post_id}/user_likes:
     post:
       tags:
@@ -132,6 +146,8 @@ paths:
       responses:
         '200':
           description: Like result.
+      operationId: postApiHeadlessV1PostsByPostIdUserLikes
+      x-operation-id-source: derived
   /api/headless/v1/community_events:
     get:
       tags:
@@ -142,6 +158,8 @@ paths:
       responses:
         '200':
           description: A page of community events.
+      operationId: getApiHeadlessV1CommunityEvents
+      x-operation-id-source: derived
   /api/headless/v1/events/{event_id}/event_attendees:
     post:
       tags:
@@ -158,6 +176,8 @@ paths:
       responses:
         '200':
           description: The RSVP.
+      operationId: postApiHeadlessV1EventsByEventIdEventAttendees
+      x-operation-id-source: derived
   /api/headless/v1/courses/{course_id}/sections:
     get:
       tags:
@@ -174,6 +194,8 @@ paths:
       responses:
         '200':
           description: The course sections.
+      operationId: getApiHeadlessV1CoursesByCourseIdSections
+      x-operation-id-source: derived
   /api/headless/v1/courses/{course_id}/lessons/{id}:
     get:
       tags:
@@ -195,6 +217,8 @@ paths:
       responses:
         '200':
           description: The course lesson.
+      operationId: getApiHeadlessV1CoursesByCourseIdLessonsById
+      x-operation-id-source: derived
   /api/headless/v1/messages:
     get:
       tags:
@@ -205,6 +229,8 @@ paths:
       responses:
         '200':
           description: The member's chat rooms.
+      operationId: getApiHeadlessV1Messages
+      x-operation-id-source: derived
     post:
       tags:
       - Headless - Member
@@ -214,6 +240,8 @@ paths:
       responses:
         '200':
           description: The created chat room.
+      operationId: postApiHeadlessV1Messages
+      x-operation-id-source: derived
   /api/headless/v1/messages/{chat_room_uuid}/chat_room_messages:
     get:
       tags:
@@ -230,6 +258,8 @@ paths:
       responses:
         '200':
           description: A page of chat messages.
+      operationId: getApiHeadlessV1MessagesByChatRoomUuidChatRoomMessages
+      x-operation-id-source: derived
     post:
       tags:
       - Headless - Member
@@ -245,6 +275,8 @@ paths:
       responses:
         '200':
           description: The sent message.
+      operationId: postApiHeadlessV1MessagesByChatRoomUuidChatRoomMessages
+      x-operation-id-source: derived
   /api/headless/v1/notifications:
     get:
       tags:
@@ -255,6 +287,8 @@ paths:
       responses:
         '200':
           description: A page of notifications.
+      operationId: getApiHeadlessV1Notifications
+      x-operation-id-source: derived
   /api/headless/v1/profile:
     put:
       tags:
@@ -265,6 +299,8 @@ paths:
       responses:
         '200':
           description: The updated profile.
+      operationId: putApiHeadlessV1Profile
+      x-operation-id-source: derived
 components:
   securitySchemes:
     tokenAuth:

@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Circle Developer Platform Admin - Courses Admin - Spaces API
-  description: 'Circle (circle.so) is an all-in-one community platform for creators, coaches, and brands. This description grounds Circle''s documented public developer platform into a single OpenAPI file for discovery. It covers two admin- or member-authenticated REST surfaces: the Admin API V2 (base https://app.circle.so/api/admin/v2) for community administration and automation, and the Headless Member API (base https://app.circle.so/api/headless/v1) for building your own member-facing experience, plus the Headless Auth API token exchange. Admin API requests use an "Authorization: Token AUTH_TOKEN" header; Headless Member API requests use a member-scoped JWT in an "Authorization: Bearer ACCESS_TOKEN" header issued by the Auth API. API access is gated to the Business plan and above. This is the community-software company at circle.so, NOT the USDC / stablecoin financial-services company. Paths shown are a representative, grounded subset of the full reference published at api-headless.circle.so.'
+  title: Circle Developer Platform Admin - Spaces API
+  description: Circle (circle.so) is an all-in-one community platform for creators, coaches, and brands.
   version: '2.0'
   contact:
     name: Circle
@@ -28,6 +28,8 @@ paths:
       responses:
         '200':
           description: A page of spaces.
+      operationId: getApiAdminV2Spaces
+      x-operation-id-source: derived
     post:
       tags:
       - Admin - Spaces
@@ -37,6 +39,8 @@ paths:
       responses:
         '200':
           description: The created space.
+      operationId: postApiAdminV2Spaces
+      x-operation-id-source: derived
   /api/admin/v2/spaces/{id}:
     parameters:
     - name: id
@@ -53,6 +57,8 @@ paths:
       responses:
         '200':
           description: The space.
+      operationId: getApiAdminV2SpacesById
+      x-operation-id-source: derived
     put:
       tags:
       - Admin - Spaces
@@ -62,6 +68,8 @@ paths:
       responses:
         '200':
           description: The updated space.
+      operationId: putApiAdminV2SpacesById
+      x-operation-id-source: derived
     delete:
       tags:
       - Admin - Spaces
@@ -71,6 +79,8 @@ paths:
       responses:
         '200':
           description: Deletion result.
+      operationId: deleteApiAdminV2SpacesById
+      x-operation-id-source: derived
   /api/admin/v2/space_groups:
     get:
       tags:
@@ -81,6 +91,8 @@ paths:
       responses:
         '200':
           description: A page of space groups.
+      operationId: getApiAdminV2SpaceGroups
+      x-operation-id-source: derived
     post:
       tags:
       - Admin - Spaces
@@ -90,6 +102,8 @@ paths:
       responses:
         '200':
           description: The created space group.
+      operationId: postApiAdminV2SpaceGroups
+      x-operation-id-source: derived
   /api/admin/v2/space_members:
     get:
       tags:
@@ -100,6 +114,8 @@ paths:
       responses:
         '200':
           description: A page of space members.
+      operationId: getApiAdminV2SpaceMembers
+      x-operation-id-source: derived
     post:
       tags:
       - Admin - Spaces
@@ -109,6 +125,8 @@ paths:
       responses:
         '200':
           description: The added space member.
+      operationId: postApiAdminV2SpaceMembers
+      x-operation-id-source: derived
     delete:
       tags:
       - Admin - Spaces
@@ -118,6 +136,8 @@ paths:
       responses:
         '200':
           description: Removal result.
+      operationId: deleteApiAdminV2SpaceMembers
+      x-operation-id-source: derived
 components:
   securitySchemes:
     tokenAuth:

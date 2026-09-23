@@ -1,13 +1,7 @@
 {
   "provider": "circle-community",
   "sources": [
-    "circle-community-admin-courses-api-openapi.yml",
-    "circle-community-admin-events-api-openapi.yml",
-    "circle-community-admin-members-api-openapi.yml",
-    "circle-community-admin-posts-api-openapi.yml",
-    "circle-community-admin-spaces-api-openapi.yml",
-    "circle-community-headless-auth-api-openapi.yml",
-    "circle-community-headless-member-api-openapi.yml"
+    "_original/circle-community-openapi.yml"
   ],
   "outputs": [
     "circle-community-admin-courses-api-openapi.yml",
@@ -21,6 +15,18 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "circle-community-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "circle-community-admin-courses-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "circle-community-admin-events-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "circle-community-admin-members-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "circle-community-admin-posts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "circle-community-admin-spaces-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "circle-community-headless-auth-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "circle-community-headless-member-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

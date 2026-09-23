@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Circle Developer Platform Admin - Courses Admin - Posts API
-  description: 'Circle (circle.so) is an all-in-one community platform for creators, coaches, and brands. This description grounds Circle''s documented public developer platform into a single OpenAPI file for discovery. It covers two admin- or member-authenticated REST surfaces: the Admin API V2 (base https://app.circle.so/api/admin/v2) for community administration and automation, and the Headless Member API (base https://app.circle.so/api/headless/v1) for building your own member-facing experience, plus the Headless Auth API token exchange. Admin API requests use an "Authorization: Token AUTH_TOKEN" header; Headless Member API requests use a member-scoped JWT in an "Authorization: Bearer ACCESS_TOKEN" header issued by the Auth API. API access is gated to the Business plan and above. This is the community-software company at circle.so, NOT the USDC / stablecoin financial-services company. Paths shown are a representative, grounded subset of the full reference published at api-headless.circle.so.'
+  title: Circle Developer Platform Admin - Posts API
+  description: Circle (circle.so) is an all-in-one community platform for creators, coaches, and brands.
   version: '2.0'
   contact:
     name: Circle
@@ -39,6 +39,8 @@ paths:
       responses:
         '200':
           description: A page of posts.
+      operationId: getApiAdminV2Posts
+      x-operation-id-source: derived
     post:
       tags:
       - Admin - Posts
@@ -48,6 +50,8 @@ paths:
       responses:
         '200':
           description: The created post.
+      operationId: postApiAdminV2Posts
+      x-operation-id-source: derived
   /api/admin/v2/posts/{id}:
     parameters:
     - name: id
@@ -64,6 +68,8 @@ paths:
       responses:
         '200':
           description: The post.
+      operationId: getApiAdminV2PostsById
+      x-operation-id-source: derived
     put:
       tags:
       - Admin - Posts
@@ -73,6 +79,8 @@ paths:
       responses:
         '200':
           description: The updated post.
+      operationId: putApiAdminV2PostsById
+      x-operation-id-source: derived
     delete:
       tags:
       - Admin - Posts
@@ -82,6 +90,8 @@ paths:
       responses:
         '200':
           description: Deletion result.
+      operationId: deleteApiAdminV2PostsById
+      x-operation-id-source: derived
   /api/admin/v2/posts/{post_id}/summary:
     get:
       tags:
@@ -98,6 +108,8 @@ paths:
       responses:
         '200':
           description: The post summary.
+      operationId: getApiAdminV2PostsByPostIdSummary
+      x-operation-id-source: derived
   /api/admin/v2/comments:
     get:
       tags:
@@ -108,6 +120,8 @@ paths:
       responses:
         '200':
           description: A page of comments.
+      operationId: getApiAdminV2Comments
+      x-operation-id-source: derived
     post:
       tags:
       - Admin - Posts
@@ -117,6 +131,8 @@ paths:
       responses:
         '200':
           description: The created comment.
+      operationId: postApiAdminV2Comments
+      x-operation-id-source: derived
   /api/admin/v2/comments/{id}:
     parameters:
     - name: id
@@ -133,6 +149,8 @@ paths:
       responses:
         '200':
           description: The comment.
+      operationId: getApiAdminV2CommentsById
+      x-operation-id-source: derived
     delete:
       tags:
       - Admin - Posts
@@ -142,6 +160,8 @@ paths:
       responses:
         '200':
           description: Deletion result.
+      operationId: deleteApiAdminV2CommentsById
+      x-operation-id-source: derived
   /api/admin/v2/topics:
     get:
       tags:
@@ -152,6 +172,8 @@ paths:
       responses:
         '200':
           description: A page of topics.
+      operationId: getApiAdminV2Topics
+      x-operation-id-source: derived
     post:
       tags:
       - Admin - Posts
@@ -161,6 +183,8 @@ paths:
       responses:
         '200':
           description: The created topic.
+      operationId: postApiAdminV2Topics
+      x-operation-id-source: derived
 components:
   securitySchemes:
     tokenAuth:

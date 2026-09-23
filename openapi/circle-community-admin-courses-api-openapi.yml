@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Circle Developer Platform Admin - Courses API
-  description: 'Circle (circle.so) is an all-in-one community platform for creators, coaches, and brands. This description grounds Circle''s documented public developer platform into a single OpenAPI file for discovery. It covers two admin- or member-authenticated REST surfaces: the Admin API V2 (base https://app.circle.so/api/admin/v2) for community administration and automation, and the Headless Member API (base https://app.circle.so/api/headless/v1) for building your own member-facing experience, plus the Headless Auth API token exchange. Admin API requests use an "Authorization: Token AUTH_TOKEN" header; Headless Member API requests use a member-scoped JWT in an "Authorization: Bearer ACCESS_TOKEN" header issued by the Auth API. API access is gated to the Business plan and above. This is the community-software company at circle.so, NOT the USDC / stablecoin financial-services company. Paths shown are a representative, grounded subset of the full reference published at api-headless.circle.so.'
+  description: Circle (circle.so) is an all-in-one community platform for creators, coaches, and brands.
   version: '2.0'
   contact:
     name: Circle
@@ -28,6 +28,8 @@ paths:
       responses:
         '200':
           description: A page of course sections.
+      operationId: getApiAdminV2CourseSections
+      x-operation-id-source: derived
     post:
       tags:
       - Admin - Courses
@@ -37,6 +39,8 @@ paths:
       responses:
         '200':
           description: The created section.
+      operationId: postApiAdminV2CourseSections
+      x-operation-id-source: derived
   /api/admin/v2/course_lessons:
     get:
       tags:
@@ -47,6 +51,8 @@ paths:
       responses:
         '200':
           description: A page of course lessons.
+      operationId: getApiAdminV2CourseLessons
+      x-operation-id-source: derived
     post:
       tags:
       - Admin - Courses
@@ -56,6 +62,8 @@ paths:
       responses:
         '200':
           description: The created lesson.
+      operationId: postApiAdminV2CourseLessons
+      x-operation-id-source: derived
   /api/admin/v2/course_lessons/{id}:
     parameters:
     - name: id
@@ -72,6 +80,8 @@ paths:
       responses:
         '200':
           description: The course lesson.
+      operationId: getApiAdminV2CourseLessonsById
+      x-operation-id-source: derived
     patch:
       tags:
       - Admin - Courses
@@ -81,6 +91,8 @@ paths:
       responses:
         '200':
           description: The updated lesson.
+      operationId: patchApiAdminV2CourseLessonsById
+      x-operation-id-source: derived
     delete:
       tags:
       - Admin - Courses
@@ -90,6 +102,8 @@ paths:
       responses:
         '200':
           description: Deletion result.
+      operationId: deleteApiAdminV2CourseLessonsById
+      x-operation-id-source: derived
   /api/admin/v2/course_lesson_progress:
     put:
       tags:
@@ -100,6 +114,8 @@ paths:
       responses:
         '200':
           description: Updated progress.
+      operationId: putApiAdminV2CourseLessonProgress
+      x-operation-id-source: derived
 components:
   securitySchemes:
     tokenAuth:

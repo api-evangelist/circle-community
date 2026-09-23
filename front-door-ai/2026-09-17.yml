@@ -1,0 +1,30 @@
+# Front Door AI Index — circle-community — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: circle-community
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: circle.so
+  final_host: circle.so
+  ownership: own
+  owner: circle-community
+  shares_host_with: null
+  inherited_from: null
+  verdict: scored
+  score: 6
+  host_score: 6
+  density: 5.76
+  words: 1042
+  tiers:
+    agentic: 3
+    core: 3
+    model: 0
+  ambiguous: 4
+  top_terms:
+    AI: 3
+    agent: 2
+    prompts: 2
+    AI agent: 1
+    automation: 1
+    smart: 1
