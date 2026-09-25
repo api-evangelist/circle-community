@@ -273,6 +273,8 @@ apis:
   - type: APIReference
     url: https://api-headless.circle.so/?urls.primaryName=Auth+APIs
 common:
+- type: VendorFacets
+  url: vendor-facets/circle-community-vendor-facets.yml
 - type: AgenticAccess
   url: agentic-access/circle-community-agentic-access.yml
 - type: DomainSecurity
