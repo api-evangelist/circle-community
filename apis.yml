@@ -62,7 +62,7 @@ tags_raw:
 - Community Platform
 - Real-Time
 created: '2026-07-05'
-modified: '2026-07-05'
+modified: '2026-10-06'
 specificationVersion: '0.23'
 apis:
 - aid: circle-community:circle-community-realtime-websocket-api
@@ -275,6 +275,8 @@ apis:
   - type: APIReference
     url: https://api-headless.circle.so/?urls.primaryName=Auth+APIs
 common:
+- url: https://circle.so/blog
+  type: Blog
 - type: VendorFacets
   url: vendor-facets/circle-community-vendor-facets.yml
 - type: AgenticAccess
