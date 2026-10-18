@@ -97,5 +97,5 @@
     - connectors/applications/circle-community-platform
     vendor_link: https://circle.so/
     builder: Fivetran
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
