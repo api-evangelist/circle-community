@@ -1,4 +1,4 @@
-# Circle (circle-community)
+# Circle
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,103 +64,159 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Circle ([circle.so](https://circle.so)) is an all-in-one community platform for creators, coaches, and brands - hosting discussions, courses, events, live streams, memberships, paywalls, and chat under a single branded space, serving communities run by creators and institutions worldwide.
+Circle (circle.so) is an all-in-one community platform for creators, coaches, and brands - hosting discussions, courses, events, live streams, memberships, paywalls, and chat under a single branded space. This is the community software company at circle.so, NOT the USDC / stablecoin financial-services company. Circle exposes a documented public developer platform: an admin-authenticated Admin API (V2) for automations, migrations, and bulk administration; a Headless offering (Member API plus Auth API) for embedding Circle features into your own website or app via member-scoped JWT tokens; and a beta ActionCable WebSocket surface for realtime chat and notifications. API access is plan-gated to the Business plan and above.
 
-> **Disambiguation:** This entry documents **Circle the community platform at circle.so**, NOT Circle the USDC / stablecoin financial-services company. All APIs here are for community, courses, memberships, and chat.
+**Areas:** Community · Creators · Courses · Membership · Event · Chat · Community Platform · Real-Time
 
-Circle exposes a documented public developer platform:
+## Circle on APIs.io
 
-- an **admin-authenticated Admin API (V2)** for automations, migrations, and bulk administration (base `https://app.circle.so/api/admin/v2`, `Authorization: Token AUTH_TOKEN`);
-- a **Headless offering** - a **Member API** (base `https://app.circle.so/api/headless/v1`) for embedding Circle features into your own website or app, and an **Auth API** that exchanges a community token for a member-scoped JWT access token; and
-- a **beta ActionCable WebSocket** at `wss://app.circle.so/cable` for realtime chat and notifications.
+Everything profiled for Circle is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/circle-community/](https://apis.io/providers/circle-community/)** — or go straight to one of the APIs or properties below.
 
-**Access model:** API access is plan-gated. The Admin API and the entire Headless offering (Member API, Auth API, and the beta WebSocket) require the **Business plan or above**. Admin API requests are admin-authenticated with a workspace token generated on the community's **Developers -> Tokens** page. Headless Member API and WebSocket requests are member-authenticated with a JWT access token that **expires after one hour** and is refreshed via the Auth API. The published Admin API rate limit is **2000 requests per 5 minutes per IP**.
+### APIs (8)
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/circle-community/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/circle-community/refs/heads/main/apis.yml)
+- [Circle Realtime WebSocket API](https://apis.io/apis/circle-community/circle-community-realtime-websocket-api/) — Beta ActionCable (Rails) WebSocket surface for realtime chat and notifications, connected at wss://app.circle.so/cable with a member Bearer access token and…
+- [Circle Admin - Courses API](https://apis.io/apis/circle-community/circle-community-admin-courses-api/) — Course sections, lessons, and progress.
+- [Circle Admin - Events API](https://apis.io/apis/circle-community/circle-community-admin-events-api/) — Events and event attendees.
+- [Circle Admin - Members API](https://apis.io/apis/circle-community/circle-community-admin-members-api/) — Admin-authenticated community member management.
+- [Circle Admin - Posts API](https://apis.io/apis/circle-community/circle-community-admin-posts-api/) — Posts, comments, and topics.
+- [Circle Admin - Spaces API](https://apis.io/apis/circle-community/circle-community-admin-spaces-api/) — Spaces, space groups, and their memberships.
+- [Circle Headless - Auth API](https://apis.io/apis/circle-community/circle-community-headless-auth-api/) — Member JWT token exchange for the Headless Member API.
+- [Circle Headless - Member API](https://apis.io/apis/circle-community/circle-community-headless-member-api/) — Member-authenticated experience endpoints.
 
-## Tags
+### Published properties
 
-- Community
-- Creators
-- Courses
-- Memberships
-- Events
-- Chat
-- Community Platform
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## Timestamps
+#### AsyncAPI (1)
 
-- **Created:** 2026-07-05
-- **Modified:** 2026-07-05
+Event-driven and webhook contracts.
 
-## APIs
+- [Circle Realtime WebSocket API (Beta)](https://apis.io/asyncapis/circle-community/circle-community-asyncapi/)
 
-### Circle Admin Members API
+#### Event channels (4)
 
-Admin-authenticated management of community members - list, search, create, update, ban, and delete members; manage member tags and tagged members; and assign members to access groups.
+Individual events and webhooks the provider emits.
 
-- **Human URL:** [https://api.circle.so/apis/admin-api](https://api.circle.so/apis/admin-api)
-- **Base URL:** `https://app.circle.so/api/admin/v2`
+- [ChatRoomChannel](https://apis.io/channels/circle-community/chatroomchannel/)
+- [ChatRoomMemberChannel](https://apis.io/channels/circle-community/chatroommemberchannel/)
+- [ChatThreadChannel](https://apis.io/channels/circle-community/chatthreadchannel/)
+- [NotificationChannel](https://apis.io/channels/circle-community/notificationchannel/)
 
-### Circle Admin Spaces API
+#### MCP servers (1)
 
-Manage the foundational containers of a community - spaces, space groups, and their memberships (single and bulk).
+Model Context Protocol servers that expose the API to agents.
 
-- **Human URL:** [https://api.circle.so/apis/admin-api](https://api.circle.so/apis/admin-api)
-- **Base URL:** `https://app.circle.so/api/admin/v2`
+- [circle-community](https://apis.io/servers/circle-community/circle-community/)
 
-### Circle Admin Posts and Comments API
+#### Agentic access (1)
 
-Create, list, retrieve, update, move, and delete posts across spaces, manage their comments, generate AI post summaries, and administer topics.
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- **Human URL:** [https://api.circle.so/apis/admin-api](https://api.circle.so/apis/admin-api)
-- **Base URL:** `https://app.circle.so/api/admin/v2`
+- [Circle Community Agentic Access](https://apis.io/agentic-access/circle-community/circle-community-agentic-access/)
 
-### Circle Admin Events API
+#### Collections (8)
 
-Create, list, get, update, duplicate, and delete community events, and manage event attendees.
+Postman and Open Collection request collections.
 
-- **Human URL:** [https://api.circle.so/apis/admin-api](https://api.circle.so/apis/admin-api)
-- **Base URL:** `https://app.circle.so/api/admin/v2`
+- [Circle Developer Platform API](https://apis.io/collections/circle-community/open-circle-community/)
+- [Circle Developer Platform Admin - Courses API](https://apis.io/collections/circle-community/open-circle-community-admin-courses-api/)
+- [Circle Developer Platform Admin - Courses Admin - Events API](https://apis.io/collections/circle-community/open-circle-community-admin-events-api/)
+- [Circle Developer Platform Admin - Courses Admin - Members API](https://apis.io/collections/circle-community/open-circle-community-admin-members-api/)
+- [Circle Developer Platform Admin - Courses Admin - Posts API](https://apis.io/collections/circle-community/open-circle-community-admin-posts-api/)
+- [Circle Developer Platform Admin - Courses Admin - Spaces API](https://apis.io/collections/circle-community/open-circle-community-admin-spaces-api/)
+- [Circle Developer Platform Admin - Courses Headless - Auth API](https://apis.io/collections/circle-community/open-circle-community-headless-auth-api/)
+- [Circle Developer Platform Admin - Courses Headless - Member API](https://apis.io/collections/circle-community/open-circle-community-headless-member-api/)
 
-### Circle Admin Courses API
+#### Governance rules (1)
 
-Administer course curricula - create, list, get, update, and delete course sections and lessons, and set a member's course lesson progress.
+Spectral rulesets for the provider's contracts.
 
-- **Human URL:** [https://api.circle.so/apis/admin-api](https://api.circle.so/apis/admin-api)
-- **Base URL:** `https://app.circle.so/api/admin/v2`
+- [Circle — asyncapi rules](https://apis.io/rules/circle-community/circle-community-asyncapi-spectral-rules/)
 
-### Circle Headless Member API
+#### Security (2)
 
-Member-authenticated server-side API for building your own member-facing experience - home feed, spaces, posts, comments, likes and reactions, bookmarks, events and RSVPs, courses and lessons, direct messages and chat rooms, notifications, and profile. Requests carry a member-specific JWT access token issued by the Auth API.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://api.circle.so/apis/headless/member-api](https://api.circle.so/apis/headless/member-api)
-- **Base URL:** `https://app.circle.so/api/headless/v1`
+- [Circle Community Authentication](https://apis.io/security/circle-community/circle-community-authentication/)
+- [Circle Community Domain Security](https://apis.io/security/circle-community/circle-community-domain-security/)
 
-### Circle Headless Auth API
+#### Plans and pricing (1)
 
-Server-to-server authentication API that exchanges a community-level headless auth token for a member-scoped JWT access token (and refresh token) used to call the Member API. Access tokens expire after one hour. Auth SDKs exist for Node.js, Ruby, Go, and Python.
+Published plans, tiers and prices.
 
-- **Human URL:** [https://api.circle.so/apis/headless/quick-start](https://api.circle.so/apis/headless/quick-start)
-- **Base URL:** `https://app.circle.so/api/v1/headless`
+- [Circle Community Plans Pricing](https://apis.io/plans/circle-community/circle-community-plans-pricing/)
 
-### Circle Realtime WebSocket API
+#### Rate limits (1)
 
-Beta ActionCable (Rails) WebSocket surface for realtime chat and notifications, connected at `wss://app.circle.so/cable` with a member Bearer access token and a whitelisted Origin header. Exposes a NotificationChannel and three chat channels (member room events, room-wide messages, thread events).
+Published request limits.
 
-- **Human URL:** [https://api.circle.so/get-started/websockets-beta](https://api.circle.so/get-started/websockets-beta)
-- **Base URL:** `wss://app.circle.so/cable`
+- [Circle Community Rate Limits](https://apis.io/rate-limits/circle-community/circle-community-rate-limits/)
 
-## Common Properties
+#### FinOps (1)
 
-- [LinkedIn](https://www.linkedin.com/company/circleco)
+What the API costs to run, by operation.
+
+- [Circle Community Finops](https://apis.io/finops/circle-community/circle-community-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://circle.so)
 - [Documentation](https://api.circle.so)
-- [Plans](plans/circle-community-plans-pricing.yml)
-- [Rate Limits](rate-limits/circle-community-rate-limits.yml)
-- [Fin Ops](finops/circle-community-finops.yml)
+- [Blog](https://circle.so/blog)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 30.1** — thin · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 68.3 |
+| Contract quality | 56.3 |
+| Contract governance | 11.4 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 32.1 |
+| Access clarity | 7.9 |
+
+**Agent readiness 32.7** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | verified |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | derived (partial credit) |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | verified |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 11.8** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/circle-community/](https://apis.io/providers/circle-community/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Circle: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/circle-community/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
